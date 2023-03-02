@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name='viewport' content='width=device-width, initial-scale=1'/>
+
+	<title>Spider-Web: A Website Design Company</title>
+    <link rel='stylesheet' href='./style.css' />
+
+    <script>
+        function Website(image, link, title){
+            this.image = image;
+            this.link = link;
+            this.title = title;
+        }
+    </script>
+    <style>
+        h1 {
+            padding-top: 2px;
+            padding-left: 5px;
+            margin-bottom: 2px;
+        }
+        #subtitle {
+            padding-left: 5px;
+            font-family: sans-serif;
+            padding-bottom: 2px;
+        }
+
+        h2 {
+            text-align: center;
+            font-family: sans-serif;
+            color: #001b2e;
+        }
+
+        .site {
+            display: inline-block;
+            width: 33%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .thumbnail {
+            width: 70%;
+            border-style: solid;
+            border-color: #001b2e;
+        }
+
+        .info {
+            font-family: sans-serif;
+            color: #001b2e;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Spider-Web</h1>
+    <div id="subtitle">website design for the future</div>
+    <hr>
+
+    <h2>Other Sites We've Made</h2>
+
+    <script>
+        var con = "";
+        var sites;
+        sites = new Array(
+            new Website("images/geranium.jpg","https://talif.sgedu.site/hw2.html", "Geranium"),
+            new Website("images/tictactoe.jpg","https://talif.sgedu.site/tictactoe.html", "Tic Tac Toe"),
+            new Website("images/dogs.jpg","https://talif.sgedu.site/joesdogs.html", "Joe's Hotdogs"),
+            new Website("images/spiderweb.jpg","home.html", "Spider-Web")
+        
+        );
+
+        for (let i = 0; i < 4; i++) {
+            con += "<div class='site'><a href=";
+            con += sites[i].link;
+            con += " target='_blank'><img src=";
+            con += sites[i].image;
+            con += " class='thumbnail'><div class='info'>";
+            con += sites[i].title;
+            con += "</div>";
+            con += "</a>";
+            con += "</div>";
+            
+
+        }
+        document.write(con);
+
+    </script>
+
+</body>
+
+</html>

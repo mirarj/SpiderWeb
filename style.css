@@ -1,4 +1,4 @@
-body {color: #00cfc1; background-color: #fff8f0; font-family:sans-serif;}
+body {color: #001b2e; background-color: #fff8f0; font-family:sans-serif;}
 
 header img {max-height: 100px; max-width: 100%;}
 
@@ -7,7 +7,7 @@ footer {
     left: 0; right: 0;
     bottom: 0;
     width: 100%;
-    display: flexbox;
+    display: inline-block;
     background-color: #fff8f0;
     color: #00cfc1;
     text-align: center;
