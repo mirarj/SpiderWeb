@@ -6,6 +6,7 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'/>
 
 	<title>Spider-Web: A Website Design Company</title>
+    <link rel="icon" href="images/swico.ico">
     <link rel='stylesheet' href='./style.css' />
 
     <script>
@@ -50,6 +51,12 @@
             font-family: sans-serif;
             color: #001b2e;
         }
+
+        @media (max-width: 600px) {
+            .site {
+                width: 50%;
+            }
+        }
     </style>
 </head>
 
@@ -67,11 +74,13 @@
             new Website("images/geranium.jpg","https://talif.sgedu.site/hw2.html", "Geranium"),
             new Website("images/tictactoe.jpg","https://talif.sgedu.site/tictactoe.html", "Tic Tac Toe"),
             new Website("images/dogs.jpg","https://talif.sgedu.site/joesdogs.html", "Joe's Hotdogs"),
-            new Website("images/spiderweb.jpg","home.html", "Spider-Web")
+            new Website("images/spiderweb.jpg","home.html", "Spider-Web"),
+            new Website("images/google.jpg","https://www.google.com/", "Google"),
+            new Website("images/canvas.jpg", "https://canvas.tufts.edu/", "Tufts Canvas")
         
         );
 
-        for (let i = 0; i < 4; i++) {
+        for (let i = 0; i < 6; i++) {
             con += "<div class='site'><a href=";
             con += sites[i].link;
             con += " target='_blank'><img src=";
