@@ -17,7 +17,7 @@ footer {
 footer li {list-style-type: none; display:inline-block; width: 15%; box-sizing: border-box; max-height: 100%;}
 
 a {color: #00cfc1; text-decoration: none;}
-a:hover {color: #001b2e; font-weight: bolder;}
+/* a:hover {color: #001b2e; font-weight: bolder;} */
 
 h1 {color: #e84855;}
 
