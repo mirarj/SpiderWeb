@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            .header {
+                background-color: black;
+                height: 80px;
+            }
+
+
+            .toggler {
+                color: white;
+                font-size: 60px;
+                margin-left: 20px;
+                background-color: black;
+            }
+
+            .sidebar {
+                position: fixed;
+                height: 100%;
+                background-color: #111;
+                padding-top: 60px;
+                top: 0;
+                left: 0;
+                z-index: 1; /* keeping it at the top*/
+                transition: 0.5s;
+                width: 0px;
+                overflow-x: hidden;
+                opacity: 0.9;
+            }
+
+            .sidebar a {
+                transition: 0.2s;
+                display: block;
+                font-size: 25px;
+                padding: 20px 50px;
+                width: 200px;
+                margin-bottom: 20px;
+                margin-top: 20px;
+                text-align: center;
+                text-decoration: none;
+                color: white;
+            }
+
+            .sidebar .close {
+                color: white;
+                font-size: 35px;
+                position: absolute;
+                right: 30px;
+                top: 20px;
+
+            }
+
+            .sidebar a:hover {
+                font-weight: bold;
+            }
+
+            .sidebar ul {
+                list-style: none;
+                cursor: pointer;
+            }
+
+            .sidebar_open {
+                width: 250px;
+            }
+        </style>
+
+        
+
+    </head>
+
+    <body>
+        <div class="header">
+            <div class="sidebar" id="sidebar">
+                <ul>
+                    <span class="close" id="close">&times;</span>
+                    <li><a href="#">Home Page</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Testimonials</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Payment Plans</a></li>
+                    <li><a href="#">Websites We Built</a></li>
+                    <li><a href="#">Our Services</a></li>
+                </ul>
+
+            </div>
+            <div class="open_sidebar">
+                <span class="toggler" id="toggler">&#9776;</span>
+            </div>
+        </div>
+
+        <script>
+            
+            let sidebar = document.getElementById("sidebar");
+            let toggler = document.getElementById("toggler");
+            let closer = document.getElementById('close');
+            
+            closer.onclick = function() {
+                sidebar.style.width = "0px";
+                console.log("hey");
+            }
+
+            toggler.onclick = function() {
+                sidebar.style.width = "300px";
+                console.log("hey");
+            }
+            /*
+            toggler.onclick = function() {
+                sidebar.getElementById("sidebar").style.display = "block";
+                console.log("hey");
+            }*/
+            
+
+        </script>
+    </body>
+</html>
