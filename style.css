@@ -23,6 +23,68 @@ h1 {color: #e84855;}
 
 p {color: #001b2e;}
 
+.header {
+    background-color: black;
+    height: 80px;
+}
+
+
+.toggler {
+    color: white;
+    font-size: 60px;
+    margin-left: 20px;
+    background-color: black;
+}
+
+.sidebar {
+    position: fixed;
+    height: 100%;
+    background-color: #111;
+    padding-top: 60px;
+    top: 0;
+    left: 0;
+    z-index: 1; /* keeping it at the top*/
+    transition: 0.5s;
+    width: 0px;
+    overflow-x: hidden;
+    opacity: 0.9;
+}
+
+.sidebar a {
+    transition: 0.2s;
+    display: block;
+    font-size: 25px;
+    padding: 20px 50px;
+    width: 200px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}
+
+.sidebar .close {
+    color: white;
+    font-size: 35px;
+    position: absolute;
+    right: 30px;
+    top: 20px;
+
+}
+
+.sidebar a:hover {
+    font-weight: bold;
+}
+
+.sidebar ul {
+    list-style: none;
+    cursor: pointer;
+}
+
+.sidebar_open {
+    width: 250px;
+}
+
 
 /* rgb(#fff8f0)
 rgb(#e84855)
