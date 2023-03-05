@@ -2,29 +2,29 @@
 
 <html>
     <head>
-
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
             * {
                 margin: 0;
                 padding: 0;
             }
             .header {
-                background-color: black;
+                background-color: #001B2E;;
                 height: 80px;
             }
 
 
             .toggler {
-                color: white;
+                color: #FFF8F0;
                 font-size: 60px;
                 margin-left: 20px;
-                background-color: black;
+                background-color: #001B2E;
             }
 
             .sidebar {
                 position: fixed;
                 height: 100%;
-                background-color: #111;
+                background-color: #001B2E;
                 padding-top: 60px;
                 top: 0;
                 left: 0;
@@ -35,17 +35,17 @@
                 opacity: 0.9;
             }
 
-            .sidebar a {
+            .sidebar ul a {
                 transition: 0.2s;
                 display: block;
                 font-size: 25px;
-                padding: 20px 50px;
+                padding: 15px 50px;
                 width: 200px;
-                margin-bottom: 20px;
+                margin-bottom: 25px;
                 margin-top: 20px;
                 text-align: center;
                 text-decoration: none;
-                color: white;
+                color: #FFF8F0;
             }
 
             .sidebar .close {
@@ -66,9 +66,32 @@
                 cursor: pointer;
             }
 
-            .sidebar_open {
-                width: 250px;
+            .open_sidebar {
+                width: 100px;
+                position: absolute;
+                margin-top: -85px;
             }
+
+            .logo {
+                margin: auto;
+                display: block;
+                right: 50%;
+                left: 50%;
+                width: 65px;
+            }
+
+            #logo_img {
+                height: 80px;
+            }
+
+            @media screen and (max-width: 500px) {
+                .sidebar ul a {
+                    font-size: 20px;
+                    margin-bottom: 10px;
+                    padding: 15px 50px;
+                }
+            }
+
         </style>
 
         
@@ -77,11 +100,12 @@
 
     <body>
         <div class="header">
+            
             <div class="sidebar" id="sidebar">
+                <a><span class="close" id="close">&times;</span></a>
                 <ul>
-                    <span class="close" id="close">&times;</span>
                     <li><a href="#">Home Page</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Contact Us</a></li>
                     <li><a href="#">Testimonials</a></li>
                     <li><a href="#">About Us</a></li>
                     <li><a href="#">Payment Plans</a></li>
@@ -90,9 +114,16 @@
                 </ul>
 
             </div>
+            <div class="logo">
+                <a href="home.html"><img id="logo_img" src="images/swico.ico"></a>
+            </div>
+            
             <div class="open_sidebar">
                 <span class="toggler" id="toggler">&#9776;</span>
             </div>
+            
+            
+            
         </div>
 
         <script>
@@ -103,20 +134,11 @@
             
             closer.onclick = function() {
                 sidebar.style.width = "0px";
-                console.log("hey");
             }
 
             toggler.onclick = function() {
                 sidebar.style.width = "300px";
-                console.log("hey");
             }
-            /*
-            toggler.onclick = function() {
-                sidebar.getElementById("sidebar").style.display = "block";
-                console.log("hey");
-            }*/
-            
-
         </script>
     </body>
 </html>
