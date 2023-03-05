@@ -1,3 +1,8 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {color: #001b2e; background-color: #fff8f0; font-family:sans-serif;}
 
 header img {max-height: 100px; max-width: 100%;}
@@ -23,23 +28,24 @@ h1 {color: #e84855;}
 
 p {color: #001b2e;}
 
+
 .header {
-    background-color: black;
+    background-color: #001B2E;;
     height: 80px;
 }
 
 
 .toggler {
-    color: white;
+    color: #FFF8F0;
     font-size: 60px;
     margin-left: 20px;
-    background-color: black;
+    background-color: #001B2E;
 }
 
 .sidebar {
     position: fixed;
     height: 100%;
-    background-color: #111;
+    background-color: #001B2E;
     padding-top: 60px;
     top: 0;
     left: 0;
@@ -50,17 +56,17 @@ p {color: #001b2e;}
     opacity: 0.9;
 }
 
-.sidebar a {
+.sidebar ul a {
     transition: 0.2s;
     display: block;
     font-size: 25px;
-    padding: 20px 50px;
+    padding: 15px 50px;
     width: 200px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     margin-top: 20px;
     text-align: center;
     text-decoration: none;
-    color: white;
+    color: #FFF8F0;
 }
 
 .sidebar .close {
@@ -81,9 +87,32 @@ p {color: #001b2e;}
     cursor: pointer;
 }
 
-.sidebar_open {
-    width: 250px;
+.open_sidebar {
+    width: 100px;
+    position: absolute;
+    margin-top: -85px;
 }
+
+.logo {
+    margin: auto;
+    display: block;
+    right: 50%;
+    left: 50%;
+    width: 65px;
+}
+
+#logo_img {
+    height: 80px;
+}
+
+@media screen and (max-width: 500px) {
+    .sidebar ul a {
+        font-size: 20px;
+        margin-bottom: 10px;
+        padding: 15px 50px;
+    }
+}
+
 
 
 /* rgb(#fff8f0)
