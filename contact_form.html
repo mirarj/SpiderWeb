@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Contact Us</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<link rel="stylesheet" url="./style.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style type="text/css">
+
+            * {
+                color: #001B2E;
+				margin: 0;
+                padding: 0;
+            }
+
+			body {
+				min-height: 100%;
+				height: 100vh;
+				display: grid;
+  				grid-template-rows: auto auto;
+			}
+
+			h1 {
+				text-align: center;
+			}
+	
+			.form_contact {
+				width: auto;
+				position: relative;
+				float: right;
+				font-size: 20px;
+				margin-top: 3%;
+				margin-bottom: 3%;
+			}
+
+			.form_contact > form {
+				float: right;
+				padding-right: 10%;
+				border-left: 3px solid black;
+				padding-left: 8%;
+			}
+			
+			.name_input > label {
+				display: inline-block;
+				width: 145px;
+				text-align: right;
+				font-weight: bold;
+			}
+			.name_input > input {
+				width: 170px;
+				border-top: 0;
+				border-left: 0;
+				border-right: 0;
+				height: 25px;
+				border-bottom: 2px solid black;
+				font-size: 15px;
+			}
+			.checkboxs > span {
+				display: block;
+				font-weight: bold;
+			}
+
+			.checkboxs > p {
+				display: inline-block;
+				width: 100px;
+                margin-bottom: 0;
+			}
+
+			.name_input{
+				margin-top: 20px;
+				text-align: center;
+				margin-right: 40px;
+			}
+
+			.checkboxs, .text_box, .button {
+				text-align: center;
+			}
+
+			.text_box {
+				font-weight: bold;
+			}
+
+			.text_box textarea {
+				margin-top: 5px;
+				width: 300px;
+				resize: none;
+				border: 2px solid black;
+				font-size: 15px;
+			}
+
+			.button {
+				margin-bottom: 10px;
+			}
+
+			.button > input {
+				height: 30px;
+				width: 70px;
+				font-weight: bold;
+				font-size: 15px;
+				background-color: #E84855;
+				border-radius: 10px;
+				border: 0.2px solid;
+			}
+			
+
+			.form_intro {
+				width: 550px;
+				float: left;
+				margin-top: 4%;
+				margin-left: 10%;
+				text-align: center;
+				font-size: 25px;
+				line-height: 2em;
+			}
+
+			.radio {
+				margin: auto;
+				right: 50%;
+				left: 50%;
+				display: block;
+				width: 330px;
+				margin-bottom: 30px;
+				text-align: center;
+			}
+
+			input[name='select'] {
+				
+				display: inline-block;
+			}
+
+			label[for="interested"], label[for="not_interested"] {
+				text-align: center;
+			}
+			
+			@media screen and (max-width: 650px) {
+				.form_intro > p {
+					font-size: 15px;
+					width: auto;
+		
+				}
+				.form_intro {
+					width: auto;
+					line-height: 1.5em;
+					margin-right: 40px;
+				}
+			}
+
+			@media screen and (max-width: 1270px) {
+				.form_intro > p {
+					font-size: 20px;
+					width: auto;
+		
+				}
+				.form_intro {
+					width: 400px;
+					line-height: 1.5em;
+				
+				}
+
+				.form_contact {
+					width: auto;
+					position: relative;
+					float: right;
+					font-size: 15px;
+					margin-top: 3%;
+					margin-bottom: 3%;
+				}
+
+			}
+
+			@media screen and (max-width: 1050px) {
+				.form_intro > p {
+					font-size: 18px;
+					width: 300px;
+					float: left;
+				}
+				.form_intro {
+					width: 300px;
+				
+				}
+
+				.form_contact {
+					font-size: 13px;
+					
+				}
+
+				.form_contact > form {
+					float: right;
+					padding-right: 10%;
+					border-left: 3px solid black;
+					padding-left: 2%;
+				}
+			}
+
+			
+
+			@media screen and (max-width: 850px) {
+				.form_intro > p {
+					font-size: 18px;
+					width: auto;
+					margin-right: 7%;
+					float: none;
+				}
+				.form_intro {
+					width: auto;
+					line-height: 1.5em;
+					float: none;
+					margin-bottom: 30px;
+				}
+
+				.form_contact {
+					width: auto;
+					position: relative;
+				}
+
+				.form_contact > form {
+					float: none;
+					padding-right: 0;
+					border-left: 0;
+					border-top: 3px solid black;
+					padding-left: 0;
+				}
+
+				.name_input > input {
+					font-size: 13px;
+				}
+
+				.name_input{
+					margin-right: 14%;
+				}
+
+				.checkboxs {
+					margin-right: 2%;
+				}
+
+				.button {
+					font-size: 10;
+				}
+		
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="header">
+            
+            <div class="sidebar" id="sidebar">
+                <a><span class="close" id="close">&times;</span></a>
+                <ul>
+                    <li><a href="#">Home Page</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Testimonials</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Payment Plans</a></li>
+                    <li><a href="#">Websites We Built</a></li>
+                    <li><a href="#">Our Services</a></li>
+                </ul>
+
+            </div>
+            <div class="logo">
+                <a href="home.html"><img id="logo_img" src="images/swico.ico"></a>
+            </div>
+            
+            <div class="open_sidebar">
+                <span class="toggler" id="toggler">&#9776;</span>
+            </div>
+            
+            
+            
+        </div>
+       <h1>Get One Step Closer to Having the Website of Your Dreams...</h1>
+		<div class="form_contact">
+			<div class="form_intro">
+				<p>Do you have questions for us? Are you curious about how the website building process
+                    goes for our clients? Do you want to talk to us about our deals? <br /> <br /> <strong>You are in the right place!</strong> 
+                    You can use the contact information found on the footer to contact us, or you can fill out this 
+                    form. We will send a reply to the submitted e-mail adress in 2 business days.
+                </p>
+			</div>
+		<form name="form_contact" id="form_contact">		
+			<div class="name_input">
+				<label for="txtName">First Name: </label>
+				<input type="text" name="txtName" id="textNameId"> 
+				<br />
+				<br />
+				<label for="txtLastName">Last Name: </label>
+				<input type="text" name="txtLastName" id="textLastNameId">
+				<br />
+				<br />
+				<label for="txtEmail">E-mail Adress: </label>
+				<input type="text" name="txtEmail" id="textEmailId">
+			</div>
+			<br />
+			<br />
+			<div class="radio">
+				<input type="radio" name="select" id="interested"> <label for="interested"> I am interested in purchasing a website plan. </label>
+				<br />
+				<input type="radio" name="select" id="not_interested"> <label for="not_interested"> I am NOT interested in purchasing a website plan. </label>
+			</div>
+			<div class = "checkboxs">
+				<span> How did you hear about us? </span>
+				<input type="checkbox" name="checkbox"> <p>Instagram</p>
+				<br />
+				<input type="checkbox" name="checkbox"> <p>Facebook</p>
+				<br />
+				<input type="checkbox" name="checkbox"> <p>Friend</p>
+				<br />
+				<input type="checkbox" name="checkbox"> <p>Other</p>
+				<br />
+			</div>
+
+			<br />
+			<div class="text_box">
+				<span> What do you want to share with us? </span>
+				<br />
+				<textarea rows="5"></textarea>
+			</div>
+			<br />
+
+			<div class="button">
+				<input type="submit" value="Submit">
+			</div>
+			
+
+		</form>
+		</div>
+
+		<footer>
+			<ul display="block">
+				<li><a href="./index.html">Home</a></li>
+				<li><a href="./about.html">About</a></li>
+				<li><a href="./testimonials.html">FAQ</a></li>
+				<li><a href="./payment.html">Buy</a></li>
+				<li><a href="./contact.html">Contact</a></li>
+			</ul>
+		</footer>
+
+        <script>
+
+			let sidebar = document.getElementById("sidebar");
+            let toggler = document.getElementById("toggler");
+            let closer = document.getElementById('close');
+            
+            closer.onclick = function() {
+                sidebar.style.width = "0px";
+            }
+
+            toggler.onclick = function() {
+                sidebar.style.width = "300px";
+            }
+			
+            function check() 
+            {
+                var email_valid = false, lname_valid = true, fname_valid = true, checkbox_valid = false, radio_valid = false;
+                var special_char = [" ", ",", ".", "<", ">", "?", "/", "|", "#", "@", "!", "$", "%", "^", "&", "*", "+", "="];
+                var alert_message;
+                let first_name = $('input[name="txtName"]').val();
+                let last_name = $('input[name="txtLastName"]').val();
+                let email_address = $('input[name="txtEmail"]').val();
+				let radio = $('input[type="radio"]').is(':checked');
+				let checkbox = $('input[type="checkbox"]').is(':checked');
+				var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+				if (!regex.test(email_address)) {
+					email_valid = false;
+				}
+				else {
+					email_valid = true;
+				}
+
+				if (checkbox)
+					checkbox_valid = true;
+
+				if (radio)
+					radio_valid = true;
+                
+                if (!last_name) 
+                    lname_valid = false;
+                else
+                    for (let i = 0; i < special_char.length; i++)
+                        for (let k = 0; k < last_name.length; k++)
+                            if (special_char[i] == last_name[k])
+                                lname_valid = false;
+                
+                if (!first_name) 
+                    fname_valid = false;
+                else
+                    for (let i = 0; i < special_char.length; i++)
+                        for (let k = 0; k < last_name.length; k++)
+                            if (special_char[i] == first_name[k])
+                                fname_valid = false;
+                
+                alert_message = "Please provide a valid: \n";
+				if (!fname_valid)
+                    alert_message += "- First Name\n"
+                if (!lname_valid)
+                    alert_message += "- Last Name\n"
+                if (!email_valid)
+                    alert_message += "- E-mail Address\n"
+				if (!radio_valid)
+                    alert_message += "- Radio Buttons \n"
+                if (!checkbox_valid)
+                    alert_message += "- Checkbox\n"
+
+                    
+                if (!lname_valid || !fname_valid || !email_valid || !radio_valid || !checkbox_valid)
+                {
+                    alert(alert_message);
+                }
+            }
+                    
+
+            $('input:eq(-1)').click(function() {
+                check();
+            })
+        </script>
+
+	
+	</body>
+</html>
