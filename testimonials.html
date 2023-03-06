@@ -8,16 +8,15 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'/>
 
 	<title>CS20 Assignment 2</title>
-    <link rel='stylesheet' href='./style.css' />
+    <link rel='stylesheet' href="style.css"/>
     <script src="https://code.jquery.com/jquery-3.6.3.slim.min.js"
             integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo="
             crossorigin="anonymous"></script>
     <style>
-        .testimonial {display: 'flex-inline'; width: 80%;}
-        .testimonial img {width: 100px;}
-        .testimonial_text {align-self: flex-end; }
-
-
+        li.testimonial {list-style: none; width: 80%; background-image:linear-gradient(180deg, white, #00cfc180 ); margin-bottom: 10%;}
+        .testimonial img {height: 100px; width:100px; display: inline; border-radius: 50px; overflow-y: hidden;}
+        .testimonial_text {height: 100px; align-self: flex-end; display: inline; color: #fff8f0; font-style: italic; font-size: 200%;}
+        
     </style>
 
 
@@ -25,11 +24,22 @@
 </head>
 
 <body>
-    <div class="testimonial">
-        <img src="./logo.png">
-        <div class="testimonial_text">Testimonial text</div>
-    </div>
-
+    <h1>Testimonials</h1>
+    <p>Here is what our customers have to say about their experience</p>
+    <ul>
+        <li class="testimonial">
+            <img src="./images/person_1.jpg">
+            <div class="testimonial_text">Webber was willing to work with me every step of the way</div>
+        </li>
+        <li class="testimonial">
+            <img src="./images/person_2.jpg">
+            <div class="testimonial_text">Webber's website helped my business grow</div>
+        </li>
+        <li class="testimonial">
+            <img src="./images/person_3.jpg">
+            <div class="testimonial_text">Webber bebber</div>
+        </li>
+    </ul>
 
     <script>
 
