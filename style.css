@@ -1,11 +1,11 @@
 * {
     margin: 0;
     padding: 0;
-    color: #001B2E;
+    /*color: #001B2E;*/
 }
 
 body {
-    color: #001b2e; 
+    /*color: #001b2e;*/
     background-color: white; 
     font-family:sans-serif;
     min-height: 100%;
