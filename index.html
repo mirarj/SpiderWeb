@@ -181,70 +181,7 @@
             toggler.onclick = function() {
                 sidebar.style.width = "300px";
             }
-			
-            function check() 
-            {
-                var email_valid = false, lname_valid = true, fname_valid = true, checkbox_valid = false, radio_valid = false;
-                var special_char = [" ", ",", ".", "<", ">", "?", "/", "|", "#", "@", "!", "$", "%", "^", "&", "*", "+", "="];
-                var alert_message;
-                let first_name = $('input[name="txtName"]').val();
-                let last_name = $('input[name="txtLastName"]').val();
-                let email_address = $('input[name="txtEmail"]').val();
-				let radio = $('input[type="radio"]').is(':checked');
-				let checkbox = $('input[type="checkbox"]').is(':checked');
-				var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-				if (!regex.test(email_address)) {
-					email_valid = false;
-				}
-				else {
-					email_valid = true;
-				}
-
-				if (checkbox)
-					checkbox_valid = true;
-
-				if (radio)
-					radio_valid = true;
-                
-                if (!last_name) 
-                    lname_valid = false;
-                else
-                    for (let i = 0; i < special_char.length; i++)
-                        for (let k = 0; k < last_name.length; k++)
-                            if (special_char[i] == last_name[k])
-                                lname_valid = false;
-                
-                if (!first_name) 
-                    fname_valid = false;
-                else
-                    for (let i = 0; i < special_char.length; i++)
-                        for (let k = 0; k < last_name.length; k++)
-                            if (special_char[i] == first_name[k])
-                                fname_valid = false;
-                
-                alert_message = "Please provide a valid: \n";
-				if (!fname_valid)
-                    alert_message += "- First Name\n"
-                if (!lname_valid)
-                    alert_message += "- Last Name\n"
-                if (!email_valid)
-                    alert_message += "- E-mail Address\n"
-				if (!radio_valid)
-                    alert_message += "- Radio Buttons \n"
-                if (!checkbox_valid)
-                    alert_message += "- Checkbox\n"
-
-                    
-                if (!lname_valid || !fname_valid || !email_valid || !radio_valid || !checkbox_valid)
-                {
-                    alert(alert_message);
-                }
-            }
-                    
-
-            $('input:eq(-1)').click(function() {
-                check();
-            })
+		
         </script>
 
 </body>
