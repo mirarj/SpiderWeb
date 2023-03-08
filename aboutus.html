@@ -24,7 +24,6 @@
 			width: 22%;
 			border: 5px solid #203C5A;
 			border-radius: 30px;
-
 		}
 		table {
 			width: 	100%;
@@ -58,7 +57,9 @@
 		.bios {
 			display: inline-block;
 			background-color: #FFF8F0;
-			width: 	30%;
+			vertical-align: top;
+			width: 	100%;
+			max-width: 30%;
 			text-align: center;
 			padding-top: 15px;
 			padding-right: 25px;
@@ -84,31 +85,15 @@
 				margin-left: auto;
 				margin-right: auto;
 				font-size: 30px;
-				padding-right: 0px;
-			padding-left: 0px;
+				padding-right: 15px;
+				padding-left: 15px;
 				
 			}
 		}
 	</style>
-	
-	<!-- <script
-  src="https://code.jquery.com/jquery-3.6.3.min.js"
-  integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
-  crossorigin="anonymous"> -->
   	
   </script>
-  <script>
-		window.onload = function() {
-		$(".bios").animate({
-  		
-  		opacity: '1',
-  		//text-align: left,
-
-  		
-  	}); 
-		}
-  	
-	</script>
+  
 </head>
 <body>
 	
@@ -118,12 +103,12 @@
                 <a><span class="close" id="close">&times;</span></a>
                 <ul>
                     <li><a href="index.html">Home Page</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Testimonials</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Payment Plans</a></li>
-                    <li><a href="#">Websites We Built</a></li>
-                    <li><a href="#">Our Services</a></li>
+                    <li><a href="contact_form.html">Contact Us</a></li>
+                    <li><a href="aboutus.html">About Us</a></li>
+                    <li><a href="webber.html">Payment Plans</a></li>
+                    <li><a href="testimonials.html">Testimonials</a></li>
+                    <li><a href="othersites.html">Websites We Built</a></li>
+                    <li><a href="process.html">Our Services</a></li>
                 </ul>
 
             </div>
@@ -152,12 +137,11 @@
             toggler.onclick = function() {
                 sidebar.style.width = "300px";
             }
-
         </script>
 	<h1>Our Team!</h1>
 		
 	<script type="text/javascript">
-		var images = ['justme.jpg', 'tali2.jpg', 'justme.jpg', 'justme.jpg'];
+		var images = ['dilanur.jpg', 'tali2.jpg', 'mira.png', 'justme.jpg'];
 		var bios = Array(4);
 		var names = ['Dilanur Bayraktar', 'Tali L. Falk-Judson', 'Mira R. Jain', 'Vera Choi']
 		bios[0] = "Dilanur is the CEO and founder of Webber. Since " + 
@@ -174,10 +158,19 @@
 		"and answers their questions.";
 		for (let i = 0; i < 4; i++) {
 			document.write("<div class = 'bios'><div class = 'names'>" + names[i] 
-				+ "</div><br/><img src='" + images[i] + "'/>	<br/>"+
+				+ "</div><br/><img src='images/" + images[i] + "'/>	<br/>"+
 				bios[i] +"</div>");
 		}
 
 	</script>
 	<script type="https"></script>
 </body>
+<footer>
+    <ul display="block">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./about.html">About</a></li>
+        <li><a href="./testimonials.html">FAQ</a></li>
+        <li><a href="./payment.html">Buy</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+    </ul>
+</footer>
