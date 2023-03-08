@@ -13,31 +13,74 @@
             integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo="
             crossorigin="anonymous"></script>
     <style>
-        li.testimonial {list-style: none; width: 80%; background-image:linear-gradient(180deg, white, #00cfc180 ); margin-bottom: 10%;}
+        ul {margin-top: 50px;}
+        li.testimonial {list-style: none; width: 80%; background-image:linear-gradient(180deg, white, #00cfc180 ); margin-bottom: 50px;}
         .testimonial img {height: 100px; width:100px; display: inline; border-radius: 50px; overflow-y: hidden;}
-        .testimonial_text {height: 100px; align-self: flex-end; display: inline; color: #fff8f0; font-style: italic; font-size: 200%;}
-        
+        .testimonial_text {height: 100px; align-self: flex-end; display: inline; color: #001b2e; font-style: italic; font-size: 200%;}
+        .left {float: left; margin-left: 50px;}
+        .right {float: right; margin-right: 50px;}
     </style>
-
-
 
 </head>
 
 <body>
+
+    <div class="header">
+        
+        <div class="sidebar" id="sidebar">
+            <a><span class="close" id="close">&times;</span></a>
+            <ul>
+                <li><a href="index.html">Home Page</a></li>
+                <li><a href="contact_form.html">Contact Us</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="webber.html">Payment Plans</a></li>
+                <li><a href="testimonials.html">Testimonials</a></li>
+                <li><a href="othersites.html">Websites We Built</a></li>
+                <li><a href="process.html">Our Services</a></li>
+            </ul>
+
+        </div>
+        <div class="logo">
+            <a href="index.html"><img id="logo_img" src="images/swico.ico"></a>
+        </div>
+        
+        <div class="open_sidebar">
+            <span class="toggler" id="toggler">&#9776;</span>
+        </div>
+        
+        
+        
+    </div>
+
+    <script>
+        
+        let sidebar = document.getElementById("sidebar");
+        let toggler = document.getElementById("toggler");
+        let closer = document.getElementById('close');
+        
+        closer.onclick = function() {
+            sidebar.style.width = "0px";
+        }
+
+        toggler.onclick = function() {
+            sidebar.style.width = "300px";
+        }
+    </script>
+
     <h1>Testimonials</h1>
     <p>Here is what our customers have to say about their experience</p>
     <ul>
-        <li class="testimonial">
+        <li class="testimonial box left">
             <img src="./images/person_1.jpg">
-            <div class="testimonial_text">Webber was willing to work with me every step of the way</div>
+            <div class="testimonial_text">"After getting Webber to build my site, I saw my sales go up by 50%. I was constantly getting complaints from customer support before, but after launching the new site, I have received multiple emails appreciating how easy it is to sign up."</div>
         </li>
-        <li class="testimonial">
+        <li class="testimonial box right">
             <img src="./images/person_2.jpg">
-            <div class="testimonial_text">Webber's website helped my business grow</div>
+            <div class="testimonial_text">"I tried multiple website design companies before this, but Webber has been the best by far. Although I had very specific needs to meet, Webber was willing to work with me every step of the way."</div>
         </li>
-        <li class="testimonial">
+        <li class="testimonial box left">
             <img src="./images/person_3.jpg">
-            <div class="testimonial_text">Webber bebber</div>
+            <div class="testimonial_text">"I was completely blown away by the quality of Webber. They went above and beyond, adding features beyond those I requested. I recommend their services to anyone trying to create a positive first impression for their customers.</div>
         </li>
     </ul>
 

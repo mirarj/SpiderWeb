@@ -10,6 +10,13 @@ display: grid;
 grid-template-rows: auto auto auto;
 }
 
+a:visited, a:link {color:#e84855; text-decoration: none;}
+a:hover {font-weight: bolder;}
+
+h1 {color: #e84855;}
+h2 {color: #00cfc1;}
+p {color: #001b2e;}
+
 .header {
 background-color: #001B2E;;
 height: 80px;
@@ -133,6 +140,12 @@ color: #FFF8F0;
 color: #FFF8F0;
 padding-bottom: 30px;
 padding-top: 30px;
+}
+
+.box {
+    box-shadow: 10px 10px 5px #001b2e;
+    background-image:linear-gradient(180deg, white, #00cfc180 );
+    border-radius: 20px;
 }
 
 @media screen and (max-width: 700px) {
