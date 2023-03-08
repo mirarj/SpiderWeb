@@ -42,6 +42,7 @@
             text-align: center;
             font-family: sans-serif;
             color: #001b2e;
+            padding: 9px;
         }
 
         .site {
@@ -76,32 +77,43 @@
 </head>
 
 <body>
-    <div class="header">
-            
-            <div class="sidebar" id="sidebar">
-                <a><span class="close" id="close">&times;</span></a>
-                <ul>
-                    <li><a href="#">Home Page</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Testimonials</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Payment Plans</a></li>
-                    <li><a href="#">Websites We Built</a></li>
-                    <li><a href="#">Our Services</a></li>
-                </ul>
+    <div class="header">  
+        <div class="sidebar" id="sidebar">
+            <a><span class="close" id="close">&times;</span></a>
+            <ul>
+                <li><a href="index.html">Home Page</a></li>
+                <li><a href="contact_form.html">Contact Us</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="webber.html">Payment Plans</a></li>
+                <li><a href="testimonials.html">Testimonials</a></li>
+                <li><a href="othersites.html">Websites We Built</a></li>
+                <li><a href="process.html">Our Services</a></li>
+            </ul>
 
-            </div>
-            <div class="logo">
-                <a href="home.html"><img id="logo_img" src="images/swico.ico"></a>
-            </div>
-            
-            <div class="open_sidebar">
-                <span class="toggler" id="toggler">&#9776;</span>
-            </div>
-            
-            
-            
         </div>
+        <div class="logo">
+            <a href="index.html"><img id="logo_img" src="images/swico.ico"></a>
+        </div>
+        
+        <div class="open_sidebar">
+            <span class="toggler" id="toggler">&#9776;</span>
+        </div>
+    </div>
+
+    <script>
+        
+        let sidebar = document.getElementById("sidebar");
+        let toggler = document.getElementById("toggler");
+        let closer = document.getElementById('close');
+        
+        closer.onclick = function() {
+            sidebar.style.width = "0px";
+        }
+
+        toggler.onclick = function() {
+            sidebar.style.width = "300px";
+        }
+    </script>
     
    
 
