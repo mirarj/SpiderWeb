@@ -82,8 +82,15 @@
 		tr:hover {
 			background-color: #2D455E;
 		}
-		
-		
+
+		@media (max-width: 700px) {
+			#buy {
+				display: block;
+			}
+			table {
+				width: 100%;
+			}
+		}
 	</style>
 </head>
 <body>
@@ -195,7 +202,7 @@
 		<td>Detailed Tracking</td>
 	</tr>
 	<tr class = 'last'>
-		<td class = 'perks' ></td>
+		<td  ></td>
 		<td class = 'basic'><a href = "#" id = "buy"> Purchase Basic</a></td>
 		<td ><a href = "#" id = 'buy'>Purchase Premium</a></td>
 		<td ><a href = "#" id = "buy"> Purchase Platinum</a></td>
