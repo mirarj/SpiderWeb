@@ -40,7 +40,7 @@
 
         h2 {
             text-align: center;
-            font-family: sans-serif;
+            font-family: standard;
             color: #001b2e;
             padding: 9px;
         }
@@ -59,7 +59,7 @@
         }
 
         .info {
-            font-family: sans-serif;
+            font-family: standard;
             color: #001b2e;
         }
 
@@ -131,11 +131,13 @@
             new Website("images/dogs.jpg","https://talif.sgedu.site/joesdogs.html", "Joe's Hotdogs"),
             new Website("images/spiderweb.jpg","home.html", "Spider-Web"),
             new Website("images/google.jpg","https://www.google.com/", "Google"),
-            new Website("images/canvas.jpg", "https://canvas.tufts.edu/", "Tufts Canvas")
-        
+            new Website("images/canvas.jpg", "https://canvas.tufts.edu/", "Tufts Canvas"),
+            new Website("images/yahoo.jpg", "https://www.yahoo.com/", "Yahoo"),
+            new Website("images/bing.jpg", "https://www.bing.com/", "Bing"),
+            new Website("images/disney.jpg", "https://www.disneyplus.com/", "Disney+")
         );
 
-        for (let i = 0; i < 6; i++) {
+        for (let i = 0; i < 9; i++) {
             con += "<div class='site'><a href=";
             con += sites[i].link;
             con += " target='_blank'><img src=";
