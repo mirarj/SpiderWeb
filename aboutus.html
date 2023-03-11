@@ -80,6 +80,24 @@
 			font-weight: bold;
 			
 		}
+		.hide {
+			display: none;
+		}
+		#seeMore {
+			margin-left: auto;
+			margin-right: auto;
+			display: block;
+			color: white;
+			border: 2px #001B2E solid ;
+			background-color: #001B2e;
+			padding-right: 5px;
+			padding-left: 5px;
+			font-size: 15px;
+
+		}
+		#seeMore:hover {
+			color: blue;
+		}
 		@media (max-width: 800px) {
 			div.bios {
 				display: block;
@@ -144,7 +162,7 @@
                 sidebar.style.width = "300px";
             }
         </script>
-	<h1>Our Team!</h1>
+	<h1>Our Team</h1>
 		
 	<script type="text/javascript">
 		var images = ['dilanur.jpg', 'tali2.jpg', 'mira.png', 'justme.jpg'];
@@ -166,6 +184,33 @@
 			document.write("<div class = 'bios'><div class = 'names'>" + names[i] 
 				+ "</div><br/><img src='images/" + images[i] + "'/>	<br/>"+
 				bios[i] +"</div>");
+		}
+		document.write('<br/><input type = "button" id = "seeMore" value = "See more" /><br/>');
+
+		for (let i = 0; i < 4; i++) {
+			document.write("<div class = 'bios hide'><div class = 'names'>" + names[i] 
+				+ "</div><br/><img src='images/" + images[i] + "'/>	<br/>"+
+				bios[i] +"</div>");
+		}
+		var seeMore = document.getElementById('seeMore');
+		var team = document.getElementsByClassName('bios');
+		var hidden = document.getElementsByClassName('hide');
+		seeMore.onclick = function() {
+			if (seeMore.value == 'See more'){
+				seeMore.value = 'See less';
+
+				for (let i = 0; i < 4; i++) {
+					hidden[i].style.display = window.getComputedStyle(team[0],null).getPropertyValue('display');
+				}
+			}
+			else {
+				seeMore.value = 'See more';
+				for (let i = 0; i < 4; i++) {
+					hidden[i].style.display = 'none';
+					
+				}
+			}
+			
 		}
 
 	</script>
