@@ -5,8 +5,8 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 	<style type="text/css">
 		body {
-			font-family: sans-serif;
-			background: #203C5A;
+			font-family: standard;
+			background: white;
 			display: inline-block;
 		}
 		.header {
@@ -21,10 +21,8 @@
 			margin-bottom: 20px;
 			color: #203C5A;
 			font-size: 50px;
-			background-color: #FFF8F0;
+			background-color: white;
 			width: 22%;
-			border: 5px solid #203C5A;
-			border-radius: 30px;
 		}
 		table {
 			width: 	100%;
@@ -57,7 +55,7 @@
 		}
 		.bios {
 			display: inline-block;
-			background-color: #FFF8F0;
+			background-color: #001B2E;
 			vertical-align: top;
 			width: 	100%;
 			max-width: 30%;
@@ -67,7 +65,9 @@
 			padding-left: 25px;
 			padding-bottom: 10px;
 			margin-left: 10%;
-			border: 5px solid #FFF8F0;
+			border: 5px solid #001B2E;
+			font-family: standard;
+			color: white;
 			border-radius: 50px;
 			margin-right: 0%;
 			justify-content: space-around;
@@ -77,11 +77,13 @@
 		}
 		.names {
 			font-size: 	30px;
+			font-weight: bold;
+			
 		}
-		@media (max-width: 700px) {
-			.bios {
+		@media (max-width: 800px) {
+			div.bios {
 				display: block;
-				width: 100%;
+				width: 80%;
 				max-width:  400px;
 				margin-left: auto;
 				margin-right: auto;
@@ -89,6 +91,9 @@
 				padding-right: 15px;
 				padding-left: 15px;
 				
+			}
+			body {
+				width: 100%;
 			}
 		}
 	</style>
