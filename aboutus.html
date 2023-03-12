@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <head>
 	<link rel="stylesheet" type="text/css" href="style.css"/>
-	<meta name=‘viewport’ content='width=device-width, initial-scale=1'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+	<meta name = "keywords" content="Web Programming, Website Design, Web, Business, Content">
+	<meta name="author" content= "SpiderWeb Programmers">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 	<style type="text/css">
 		body {
@@ -121,7 +124,7 @@
 </head>
 <body>
 	
-	 <div class="header">
+	  <div class="header">
             
             <div class="sidebar" id="sidebar">
                 <a><span class="close" id="close">&times;</span></a>
@@ -129,7 +132,7 @@
                     <li><a href="index.html">Home Page</a></li>
                     <li><a href="contact_form.html">Contact Us</a></li>
                     <li><a href="aboutus.html">About Us</a></li>
-                    <li><a href="webber.html">Payment Plans</a></li>
+                    <li><a href="payplans.html">Payment Plans</a></li>
                     <li><a href="testimonials.html">Testimonials</a></li>
                     <li><a href="othersites.html">Websites We Built</a></li>
                     <li><a href="process.html">Our Services</a></li>
@@ -193,11 +196,11 @@
 		bios2[1] = "Pedro Pascal is Webber's assistant customer service manager. He is able to diffuse " +
 		"any conflict with a client if any arises.";
 		bios2[2] = "Zendaya is Webber's official stockholding owner. She provides the funds for our operation, and reaps the profits.";
-		bios2[3] = "Ice Spice is ";
+		bios2[3] = "Ice Spice is our team's financial advisor. She ensures the company's money is invested correctly and optimally.";
 		for (let i = 0; i < 4; i++) {
-			document.write("<div class = 'bios hide'><div class = 'names'>" + names[i] 
-				+ "</div><br/><img src='images/" + images[i] + "'/>	<br/>"+
-				bios[i] +"</div>");
+			document.write("<div class = 'bios hide'><div class = 'names'>" + names2[i] 
+				+ "</div><br/><img src='images/" + images2[i] + "'/>	<br/>"+
+				bios2[i] +"</div>");
 		}
 		var seeMore = document.getElementById('seeMore');
 		var team = document.getElementsByClassName('bios');
@@ -222,13 +225,13 @@
 
 	</script>
 	<script type="https"></script>
+	<div class="footer">
+			<div class="contact_info">
+				<p class="phone"><strong>Phone Number: </strong>+1 617 669 6344</p>
+				<p> <strong>Email Adress: </strong></p> <a href='mailto:dilanurbayraktar12@gmail.com'>dilanurbayraktar12@gmail.com</a>
+			</div>
+			<div class="quote">
+				<p>Not just a website, a lifestyle.</p>
+			</div>
+		</div>
 </body>
-<footer>
-    <ul display="block">
-        <li><a href="./index.html">Home</a></li>
-        <li><a href="./about.html">About</a></li>
-        <li><a href="./testimonials.html">FAQ</a></li>
-        <li><a href="./payment.html">Buy</a></li>
-        <li><a href="./contact.html">Contact</a></li>
-    </ul>
-</footer>
