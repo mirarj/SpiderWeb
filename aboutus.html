@@ -186,7 +186,14 @@
 				bios[i] +"</div>");
 		}
 		document.write('<br/><input type = "button" id = "seeMore" value = "See more" /><br/>');
-
+		var images2 = ['idina.jpg', 'pedro.jpg', 'zendaya.jpg', 'icespice.jpg'];
+		var bios2 = Array(4);
+		var names2 = ['Idina Menzel', 'Pedro Pascal', 'Zendaya', 'Ice Spice'];
+		bios2[0] = "Idina Menzel is our team moral expert. She manages our workplace dynamic and ensures everyone feels comfortable.";
+		bios2[1] = "Pedro Pascal is Webber's assistant customer service manager. He is able to diffuse " +
+		"any conflict with a client if any arises.";
+		bios2[2] = "Zendaya is Webber's official stockholding owner. She provides the funds for our operation, and reaps the profits.";
+		bios2[3] = "Ice Spice is ";
 		for (let i = 0; i < 4; i++) {
 			document.write("<div class = 'bios hide'><div class = 'names'>" + names[i] 
 				+ "</div><br/><img src='images/" + images[i] + "'/>	<br/>"+
