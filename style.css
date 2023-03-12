@@ -69,6 +69,27 @@
 				color: #FFF8F0;
 			}
 
+.copyright p {
+				color: #FFF8F0;
+				text-align: center;
+				position: absolute;
+				margin-right: auto;
+				margin-left: auto;
+				display: block;
+				width: 100%;
+				padding-top: 2px;
+				margin-bottom: 5px;
+				font-size: 17px;
+		
+			}
+
+			.copyright {
+				width: 100%;
+	
+				display: block;
+				
+			}
+
 			
 	
 			@media screen and (max-width: 500px) {
