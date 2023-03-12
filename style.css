@@ -23,8 +23,9 @@
 
 			
 
+			
 			.footer {
-				height: 200px;
+				height: 230px;
 				color: #FFF8F0;
 				margin-top: auto;
 				background-color: #001B2E;
@@ -68,7 +69,7 @@
 				color: #FFF8F0;
 			}
 
-		
+			
 	
 			@media screen and (max-width: 500px) {
 				.footer .contact_info p {
@@ -96,17 +97,14 @@
 					font-size: 25px;
 				}
 
+				
 			}
+
+
 
 			
 
 			@media screen and (max-width: 850px) {
-
-				.contact_info , .quote {
-					display: block;
-					float: none;
-					width: 100%;
-				}
 				.footer {
 					display: block;
 					height: 300px;
