@@ -20,6 +20,17 @@
 				display: grid;
   				grid-template-rows: auto auto auto;
 			}
+a:visited, a:link {color:#e84855; text-decoration: none;}
+a:hover {font-weight: bolder;}
+
+h1 {color: #e84855; font-size: xx-large; font-weight: bold;}
+h2 {color: #00cfc1;}
+p {color: #001b2e;}
+
+.header {
+background-color: #001B2E;;
+height: 80px;
+}
 
 
 		
