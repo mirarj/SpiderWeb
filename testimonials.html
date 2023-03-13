@@ -10,29 +10,33 @@
     <meta name="keywords" content="Web Programming, Website Design, Web, Business, Content">
     <meta name="author" content="SpiderWeb Programmers">
 
-
 	<title>Testimonials</title>
     <link rel='stylesheet' href="style.css"/>
     <link rel="icon" href="images/swico.ico">
     <script src="https://code.jquery.com/jquery-3.6.3.slim.min.js"
             integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo="
             crossorigin="anonymous"></script>
+
     <style>
         body {font-family: standard;}
-        h1 {text-align: center; margin: 2em; color: #e84855; font-size: xx-large; font-weight: bold;}
         h2 {color: #00cfc1;}
         p {color: #001b2e;}
-        li.testimonial {list-style: none; width: 80%; background-image:linear-gradient(180deg, white, #00cfc180 ); margin-bottom: 50px; font-size: medium; text-align: center; line-height: 2em;}
-        .testimonial img.person {height: 100px; width:100px; display: inline; border-radius: 50px; overflow-y: hidden;}
+        li.testimonial {list-style: none; width: 80%; margin-bottom: 50px; font-size: medium; text-align: center; line-height: 2em;}
+        .testimonial img.person {height: auto; width:100px; display: inline; border-radius: 50px; overflow-y: hidden;}
+        .testimonial .quote {width: 80%; height:auto; float:right; padding:0.5em 1em; display: inline; color: #001b2e; font-style: italic; font-size: large;}
         .testimonial img {width:90%; margin:auto; display: block; overflow-y: hidden;}
-        .testimonial_text {height: 100px; align-self: flex-end; display: inline; color: #001b2e; font-style: italic; font-size: large;}
+        .testimonial .details {width: 90%; display: block; color: #fff8f0; font-size: large; margin: 1em;}
         .left {float: left; margin-left: 50px;}
         .right {float: right; margin-right: 50px;}
         .box {
-            box-shadow: 10px 10px 5px #001b2e;
-            background-image:linear-gradient(180deg, white, #00cfc180 );
+            background-image:linear-gradient(180deg, #ffffff00,  #00cfc180 20%, #00cfc180 40%, #001b2e);
             border-radius: 20px;
         }
+        @media screen and (max-width:850px) {
+            .testimonial .quote {margin: auto; float: none; display: block;}
+            .left, .right {float: none; margin: auto;}
+        }
+
 
     </style>
 
@@ -83,24 +87,32 @@
     </script>
 
     <h1>Testimonials</h1>
+    <div class="subh1">Considering your options? Hear what our other customers have to say about us.</div>
     <ul>
         <li class="testimonial box left">
-            <img class=person src="./images/person_3.jpg">
-            <div class="testimonial_text">"I was completely blown away by the quality of SpiderWeb Programmers. They went above and beyond, adding features beyond those I requested. I recommend their services to anyone trying to create a positive first impression for their customers.</div>
-            <img src="images/tictactoe.png">
-            Bob is an educator who wanted to find the perfect website that would keep his elementary school students engaged. 
+            <div>
+                <img class=person src="./images/person_3.jpg">
+                <p class="quote">"I was completely blown away by the quality of SpiderWeb Programmers. They went above and beyond, adding features beyond those I requested. I recommend their services to anyone trying to create a positive first impression for their customers."</p>
+            </div>
+            <a href="https://mirarj.github.io/CS20/Assignment5_JS"><img src="images/tictactoe.png"></a>
+            <p class="details">Bob is an educator from Nepal who wanted to find a way to keep his students engaged. His website needed to be fun and colorful, but simple and easy to use. During the design phase, we hired a consulting team to help us create a perfect website tailored for grade school children. We designed interactive and exciting games like tic tac toe from scratch in order to teach Bob's students about rows and columns.</p>
         </li>
         <li class="testimonial box right">
-            <img class=person src="./images/person_2.jpg">
-            <div class="testimonial_text">"I tried multiple website design companies before this, but SpiderWeb Programmers has been the best by far. Although I had very specific needs to meet, Webber was willing to work with me every step of the way."</div>
-            <a href=""><img src="images/geranium.jpg"></a>
-            Linda lives in Idaho and was looking for a way to sell her used books. She had collected books over many years and wanted them to find a new home where they would be cherished. At first, Linda only wanted something small, but she was so successful that she now runs a small business.
+            <div>
+                <img class=person src="./images/person_2.jpg">
+                <p class="quote">"I tried multiple website design companies before this, but SpiderWeb Programmers has been the best by far. Although I had very specific needs to meet, SpiderWeb was willing to work with me every step of the way."</p>
+            </div>
+            <a href="https://talif.sgedu.site/hw2.html"><img src="images/geranium.jpg"></a>
+            <p class="details">Linda lives in Idaho and was looking for a way to sell her used books to new homes where they would be cherished. At first, Linda only wanted something small, but she was so successful that she now runs a small business. As Linda changed her plans, her goals for her website changed as well. We made sure to keep up with these goals by adding more professional content and design elements without losing the charm of a used bookstore that got her started. Most importantly, we wanted to make sure we matched Linda's personal vision as perfectly as possible.</p>
         </li>
         <li class="testimonial box left">
-            <img class=person src="./images/person_1.jpg">
-            <div class="testimonial_text">"After getting SpiderWeb Programmers to build my site, I saw my sales go up by 50%. I was constantly getting complaints from customer support before, but after launching the new site, I have received multiple emails appreciating how easy it is to sign up."</div>
-            <img src="images/joes.png">
-            James is an entrepreneur from New York. He came to us loooking for a website that would attract customers to his hotdogs delivery business. We researched 
+            <div>
+                <img class=person src="./images/person_1.jpg">
+                <p class="quote">"After getting SpiderWeb Programmers to build my site, I saw my sales go up by 50%. I was constantly getting complaints from customer support before, but after launching the new site, I have received multiple emails appreciating how easy it is to sign up."</p>
+            </div>
+            <a href="https://mirarj.github.io/CS20/Assignment4_JS/"><img src="images/joes.png"></a>
+            <p class="details">Joe is an entrepreneur from New York. He came to us loooking for a website that would attract customers to his hotdogs delivery business. We spent weeks resarching the New York hotdog market in order to appeal to his customers and designed our website around the results. It was important to emphasize the quality of Joe's highly rated hotdogs while keeping the site accessible for fast food customers seeking a lower price point.
+            </p>
         </li>
     </ul>
 

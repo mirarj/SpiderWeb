@@ -10,24 +10,29 @@
     <meta name="keywords" content="Web Programming, Website Design, Web, Business, Content">
     <meta name="author" content="SpiderWeb Programmers">
 
-
 	<title>Our Process</title>
     <link rel='stylesheet' href='./style.css' />
     <link rel="icon" href="images/swico.ico">
+    <script src="https://code.jquery.com/jquery-3.6.3.slim.min.js"
+    integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo="
+    crossorigin="anonymous"></script>
 
     <style>
         body {font-family: standard;}
-        h1 {text-align: center; margin: 2em; color: #e84855; font-size: xx-large; font-weight: bold;}
-        h2 {color: #00cfc1;}
+        h2 {color: #fff8f0;}
         p {color: #001b2e;}
         p, h2 {text-align: center;}
-        .step {width: 80%; text-align: center; margin-left: 10%; margin-bottom: 50px; line-height: 2em}
+        .step {width: 90%; text-align: center; margin: 25px auto; line-height: 2em}
+        .subh1 + .step {margin-top: 0;}
         .step p {width: 100%;}
         .step p:nth-child(2) {font-weight: bold;}
         .box {
-            box-shadow: 10px 10px 5px #001b2e;
-            background-image:linear-gradient(180deg, white, #00cfc180 );
+            box-shadow: 10px 10px 0px #001b2e;
+            background-color:#00cfc190;
             border-radius: 20px;
+        }
+        .box:nth-child(even) {
+            background-color: #E8485090;
         }
 
     </style>
@@ -78,9 +83,8 @@
         }
     </script>
 
-    <h1>OUR PROCESS</h1>
-    <p>At Spider-Web, the customer's convenience is the priority. Our sign up process is as simple as it gets.</p>
-
+    <h1>Our Process</h1>
+    <div class="subh1">We value transparency. Take a look at what goes on behind the scenes after you've signed up.</div>
     <div class="step box">
         <h2>Contact Us</h2>
         <p>Send us a request using this <a href="contact_form.html" target="_blank">page</a>.</p>
@@ -88,7 +92,7 @@
     </div>
 
     <div class="step box">
-        <h2>Discovery Phase</h2>
+        <h2>Discovery</h2>
         <p>Our team will schedule an interview with you within a week.</p>
         <p>In this phase, we research your target audience, and come up with specific goals for the project. We want our website to be a perfect fit for your needs. We will take into account your branding and design a website that feels right.</p>
     </div>
@@ -101,7 +105,7 @@
 
     <div class="step box">
         <h2>Design</h2>
-        <p>We continue to work on the visual look of your website.</p>
+        <p>Continue to work on the visual look of your website.</p>
         <p>We will decide on a color palette, typography, and any images you will use.</p>
     </div>
 
@@ -114,7 +118,7 @@
     <div class="step box">
         <h2>Launch</h2>
         <p>Your website is ready!</p>
-        <p>We will take care of publishing your website, all you need to do is click on it.</p>
+        <p>We will take care of publishing your website, all you need to do is click on it. If you have a custom domain, this is where we will publish it.</p>
     </div>
 
     <div class="step box">
