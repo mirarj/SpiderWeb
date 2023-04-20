@@ -16,47 +16,18 @@
 
     * {
         font-family: Arial, Helvetica, sans-serif;
+	background-color: #FFF8F0;
     }
     h1 {
         text-align: center;
         color: black;
     }
-    #todays_astronomy {
-        background-color: rgba(38, 38, 198, 0.4);
-        width: 70%;
-        margin-right: auto;
-        margin-left: auto;
-        border-radius: 10px;
-
-    }
-
-    #date, #title, #description {
-        margin-right: auto;
-        margin-left: auto;
-        display: block;
-        text-align: center;
-    }
+	
+#movie {
+	background-color: #001B2E;
+}
 
 
-    img {
-        width: 70%;
-        margin-right: auto;
-        margin-left: auto;
-        display: block;
-        margin-top: 40px;
-        margin-bottom: 40px;
-    }
-
-    #date {
-        padding-top: 15px;
-        font-size: 18px;
-    }
-
-    #description {
-        font-size: 20px;
-        padding-bottom: 40px;
-        width: 90%;
-    }
 </style>
 </head>
 
@@ -151,10 +122,10 @@ curl_close($curl);
         }
 
         function output(movie_id, i, title, img_source, genre_array_php, genres, overview, date, cast_search) {
-            document.getElementById("show_data").innerHTML += "<div id='movie" + i + "' style='border: 1px solid black'>"
-            document.getElementById("movie" + i).innerHTML += "<img id='poster' src='"+"http://image.tmdb.org/t/p/w500/" + img_source + "' style = 'width: 200px'>";
-            document.getElementById("movie" + i).innerHTML += "<p id='title'> " + title + "</p>";
-            document.getElementById("movie" + i).innerHTML += "<p id='genres'> ";
+            document.getElementById("show_data").innerHTML += "<div id='movie' style='border: 1px solid black'>"
+            document.getElementById("movie").innerHTML += "<img id='poster' src='"+"http://image.tmdb.org/t/p/w500/" + img_source + "' style = 'width: 200px'>";
+            document.getElementById("movie").innerHTML += "<p id='title'> " + title + "</p>";
+            document.getElementById("movie").innerHTML += "<p id='genres'> ";
             for (var key in genre_array_php) {
                 genres.forEach(element => {
                     if (genre_array_php[key] == element)
@@ -162,12 +133,12 @@ curl_close($curl);
                 });
             }
             get_cast_info(movie_id, i);
-            document.getElementById("movie" + i).innerHTML += "</ul>"
-            document.getElementById("movie" + i).innerHTML += "</p>";
-            document.getElementById("movie" + i).innerHTML += "<p id='overview'> " + overview + "</p>";
-            document.getElementById("movie" + i).innerHTML += "<p id='date'> " + date + "</p>";
-            document.getElementById("movie" + i).innerHTML += "<button id='add_to_wishlist'> Add to wishlist </button>";
-            document.getElementById("movie" + i).innerHTML += "<button id='add_to_watched'> Add to watched </button>";
+            document.getElementById("movie").innerHTML += "</ul>"
+            document.getElementById("movie").innerHTML += "</p>";
+            document.getElementById("movie").innerHTML += "<p id='overview'> " + overview + "</p>";
+            document.getElementById("movie").innerHTML += "<p id='date'> " + date + "</p>";
+            document.getElementById("movie").innerHTML += "<button id='add_to_wishlist'> Add to wishlist </button>";
+            document.getElementById("movie").innerHTML += "<button id='add_to_watched'> Add to watched </button>";
             document.getElementById("show_data").innerHTML += "</div>"
         }
         function getAPI() {
