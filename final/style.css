@@ -1,0 +1,59 @@
+@font-face {
+    font-family: standard;
+    src: url("fonts/Tilt_Neon/static/TiltNeon-Regular.ttf");
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	color: #001B2E;
+	font-family: standard;
+}
+
+body {
+	min-height: 100%;
+	height: 100vh;
+}
+
+h1 {
+	display: block;
+	text-align: center;
+	border: 15px;
+	border-radius: 30px;
+	margin: 10px auto;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	font-size: 2.5em;
+	font-weight: bold;
+	color: #FFF8F0;
+	background-color:#e84855;
+	width: 40%;
+	min-width: 300px;
+	float: center;
+}
+.subh1 {
+	display: block;
+	text-align: center;
+	stroke: #e84855 3px;
+	margin: auto auto 1.5em auto;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	font-size: 1.5em;
+	font-weight: bold;
+	width: 80%;
+	float: center;}
+h2 {color: #00cfc1;}
+p {color: #001b2e;}
+
+a:visited, a:link {color:#e84855; text-decoration: none;}
+a:hover {font-weight: bolder;}
+
+#active {
+	background-color: #E84855;
+}
+
+/* rgb(#fff8f0)
+rgb(#e84855)
+rgb(#00cfc1)
+rgb(#001b2e) */
+
