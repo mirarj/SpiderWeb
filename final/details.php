@@ -10,30 +10,7 @@
 
 <body>
 
-<header>
-	<a href="./index.php"><img src="./images/swico.ico"></a>
-	<form method="get" id="searchbar" action="search.php">
-		<label for="em">Search</label>
-		<input type='text' name='query'>
-		<input type = "submit" value = "icon" />
-	</form>
-	<h1>Create Account</h1>
-	<?php
-	session_start();
-	if (isset($_POST['logout'])) {
-		session_destroy();
-		echo '<script type="text/javascript">window.location = "signup.php"</script>'; // refresh page
-	}
-	if (isset($_SESSION['userid'])){
-		echo "Logged in";
-		echo "<form method='post' action='signup.php' class='loginout'><input type='submit' name='logout' value='Log Out'></form>";
-	}
-	else{
-		echo "Not logged in";
-		echo "<form method='get' action='login.php' class='loginout'><input type='submit' value='Log In'></form>";
-	}	
-	?>
-</header>
+<h1>Create Account</h1>
 
 
 <form method="post" id="form1" action="signup.php">
@@ -44,17 +21,16 @@
 	<label for="pw">Password</label> <br />
 	<input type='password' name='password' id='pw'><br>
 	<input type = "submit" value = "Create Account" />
-</form>
-<?php
+
+	<?php
+	//establish connection info
+	$server = "35.212.65.183";
+	$userid = "u0qw5mzxxutfs";
+	$pw = "k1nwmps94r8z";
+	$db = "dbg1zmcxmgjkkw";
+	$conn = new mysqli($server, $userid, $pw, $db);
 
 	if ($_POST) {
-		//establish connection info	
-		$server = "35.212.42.21";
-		$userid = "uaqtg5oezskik";
-		$pw = "talissqluser";
-		$db = "db4qzjfvgwun4s";
-		$conn = new mysqli($server, $userid, $pw, $db);
-
 		$sql = "SELECT username, email FROM users";
 		$result = $conn->query($sql);
 		$continue = true;
@@ -80,14 +56,16 @@
 				// echo $sql;
 				$result = $conn->query($sql);
 			}		
-
+	
 		$conn->close();
-
+	
 	}
-
-?>
+	
+	?>
+</form>
 
 <script>
+
 	form_obj = document.querySelector("#form1");
 
 	form_obj.onsubmit = function() {

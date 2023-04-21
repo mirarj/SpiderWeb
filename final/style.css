@@ -52,6 +52,13 @@ a:hover {font-weight: bolder;}
 	background-color: #E84855;
 }
 
+td {padding: 0.5em; border: 1px solid;}
+
+header {display: flex;}
+/* form #login {display: inline;}
+form #searchbar {display: inline;} */
+form #searchbar input[type='submit'] {background-image: url('./images/search-icon.png'); background-size: contain; background-repeat: no-repeat;}
+
 /* rgb(#fff8f0)
 rgb(#e84855)
 rgb(#00cfc1)
