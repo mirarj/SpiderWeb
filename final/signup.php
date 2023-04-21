@@ -10,30 +10,11 @@
 
 <body>
 
-<header>
-	<a href="./index.php"><img src="./images/swico.ico"></a>
-	<form method="get" id="searchbar" action="search.php">
-		<label for="em">Search</label>
-		<input type='text' name='query'>
-		<input type = "submit" value = "icon" />
-	</form>
-	<h1>Create Account</h1>
-	<?php
-	session_start();
-	if (isset($_POST['logout'])) {
-		session_destroy();
-		echo '<script type="text/javascript">window.location = "signup.php"</script>'; // refresh page
-	}
-	if (isset($_SESSION['userid'])){
-		echo "Logged in";
-		echo "<form method='post' action='signup.php' class='loginout'><input type='submit' name='logout' value='Log Out'></form>";
-	}
-	else{
-		echo "Not logged in";
-		echo "<form method='get' action='login.php' class='loginout'><input type='submit' value='Log In'></form>";
-	}	
-	?>
-</header>
+<?php
+	include('./header.php');
+	makeHeader('signup.php', 'Sign Up');
+?>
+
 
 
 <form method="post" id="form1" action="signup.php">

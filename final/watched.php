@@ -10,6 +10,11 @@
 
 <body>
 
+<?php
+	include('./header.php');
+	makeHeader('watched.php', 'My Watched List');
+?>
+
 <h1>My Watched List</h1>
 
 	<?php
