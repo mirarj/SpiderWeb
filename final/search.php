@@ -5,6 +5,7 @@
     <head>
 	    <meta charset="utf-8"/>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://kit.fontawesome.com/a7de828ebd.js" crossorigin="anonymous"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>MyMovieNetwork</title>
         <link rel="stylesheet" href="style.css">
@@ -16,18 +17,119 @@
 
     * {
         font-family: Arial, Helvetica, sans-serif;
-	background-color: #FFF8F0;
+        background-color: #FFF8F0;
+    }
+  
+    #cast_button {
+        padding: 10px;
+        font-size: 1em;
+        background-color: #001B2E;
+        border: 0px;
+        color: #FFF8F0;
+        //display: block;
+        //margin-right: 50%;
+        //margin-left: 50%;
+        //width: 300px;
+        margin:0 auto;
+        display:block;
+        font-size: 30px;
+        margin-bottom: 30px;
+    }
+
+
+
+    ul {
+        display: none;
+        //display: grid;
+        grid-template-columns: repeat(4, 1fr);
     }
     h1 {
         text-align: center;
         color: black;
     }
-	
-#movie {
-	background-color: #001B2E;
-}
+    #show_data div, p, li, h2, strong, ul {
+        background-color: #001B2E;
+    }
+
+    #show_data > div {
+        border-radius: 20px;
+        width: 80%;
+        margin-right: auto;
+        margin-left: auto;
+        margin-bottom: 30px;
+        overflow: hidden;
+    }
+    #show_data p, li, h2 {
+        color: #FFF8F0;
+    }
+
+    #poster {
+        width: 250px;
+        margin-top: 30px;
+        margin-left: 30px;
+        display: block;
+    }
+
+    #title {
+        color: #E84855;
+        margin-top: 50px;
+    }
+
+    strong {
+        color: #00CFC1;
+    }
 
 
+
+    #image_column {
+        height: 450px;
+        width: 40%;
+        display: inline-block;
+        float: left:
+    }
+
+    #info_column {
+        height: 450px;
+        margin-left: 2%;
+        width: 50%;
+        display: inline-block;
+        //float: left;
+        
+        vertical-align:top;
+    }
+
+    #add_buttons button:first-child{
+        display: block;
+        margin-bottom: 30px;
+        border-radius: 30px;
+        border: 0px;
+        background-color: #E84855;
+        font-size: 25px;
+        color: #FFF8F0;
+        padding: 15px;
+        margin:0 auto;
+        display:block;
+        margin-bottom: 30px;
+        width: 300px;
+
+    }
+
+  
+
+    #add_buttons button:nth-child(2) {
+        display: block;
+        margin-bottom: 30px;
+        border-radius: 30px;
+        border: 0px;
+        background-color: #00CFC1;
+        font-size: 25px;
+        color: #FFF8F0;
+        padding: 15px;
+        margin:0 auto;
+        display:block;
+        margin-bottom: 30px;
+        width: 300px;
+    }
 </style>
 </head>
 
@@ -72,6 +174,8 @@ curl_close($curl);
 
 ?>
 
+
+
 <script>
         function get_cast_info(movie_id, i) {
             let URL = "https://api.themoviedb.org/3/movie/"+movie_id+"/credits?api_key=fcabeffb7c941589973c5ba5beb7f636&language=en-US";
@@ -81,21 +185,52 @@ curl_close($curl);
                     {
                         var people = JSON.parse(data);
                         var cast_length = Object.keys(people["cast"]).length;
-                        console.log("people lenght: " + cast_length);
-                        document.getElementById("movie" + i).innerHTML += "<ul id='cast'>"
+                        //console.log("people lenght: " + cast_length);
+                        
                         if (cast_length == 0) {
-                            document.getElementById("movie" + i).innerHTML += "<li id='cast0'> No cast information found at this time. </li>";
+                            document.getElementById("cast" + i).innerHTML += "<li id='cast_item0'> No cast information found at this time. </li>";
                         }
                         else {
                             for (let k = 0; k < cast_length; k++) {
                                 if (people["cast"][k].known_for_department == "Acting") {
-                                    document.getElementById("movie" + i).innerHTML += "<li id='cast" + k + "'> " + people["cast"][k].name + "</li>";
+                                    document.getElementById("cast" + i).innerHTML += "<li id='cast_item" + k + "'> " + people["cast"][k].name + "</li>";
                                 }
                             }
                         }
                     })
                     .catch (error => console.log(error))
 
+        }
+
+        function showCast(i) {
+            var x = document.getElementById("cast" + i);
+            var button = document.getElementById("cast_button");
+            if (button.innerHTML == "Click to see cast info!") {
+                x.style.display = "grid";
+                button.innerHTML = "Click to close cast info!";
+            }
+            else {
+                x.style.display = "none";
+                button.innerHTML = "Click to see cast info!";
+            }
+        }
+
+        
+
+        function add_to_watched(i) {
+            console.log("clicked" + i);
+            console.log("$('#add_to_watched'):eq(i).html(): " + $("#add_to_watched" + i).html());
+            if ($("#add_to_watched" + i).html() == "Add to watched") {
+                console.log("changing");
+                $("#add_to_watched" + i).html("Added to watched");
+            }
+        }
+
+        function add_to_wishlist(i) {
+            if ($("#add_to_wishlist" + i).html() == "Add to wishlist") {
+                $("#add_to_wishlist" + i).html("Added to wishlist");
+            }
+            
         }
 
         function buildSearch() {
@@ -116,29 +251,39 @@ curl_close($curl);
 						t += "</select>";
 						t += "<br /><button onclick='getAPI()'>Submit</button>"
 						document.getElementById("search").innerHTML += t;
+                       
                     })
                     .catch (error => console.log(error))
                     
         }
 
         function output(movie_id, i, title, img_source, genre_array_php, genres, overview, date, cast_search) {
-            document.getElementById("show_data").innerHTML += "<div id='movie' style='border: 1px solid black'>"
-            document.getElementById("movie").innerHTML += "<img id='poster' src='"+"http://image.tmdb.org/t/p/w500/" + img_source + "' style = 'width: 200px'>";
-            document.getElementById("movie").innerHTML += "<p id='title'> " + title + "</p>";
-            document.getElementById("movie").innerHTML += "<p id='genres'> ";
+            document.getElementById("show_data").innerHTML += "<div id='movie" + i + "' style='border: 1px solid black'>"
+            document.getElementById("movie" + i).innerHTML += "<div id='image_column'> <img id='poster' src='"+"http://image.tmdb.org/t/p/w500/" + img_source + "'> </div>";
+            
+             let genre_string = "";
+             let count = 1;
             for (var key in genre_array_php) {
                 genres.forEach(element => {
-                    if (genre_array_php[key] == element)
-                        document.getElementById("movie" + i).innerHTML += key + ", "
+                    if (genre_array_php[key] == element) {
+                        genre_string += key;
+                        if(genres[genres.length-1] == element){
+                            console.log("Last Element")
+                        }
+                        else {
+                            genre_string += ", ";
+                        }
+                    }
+                    
                 });
             }
+            document.getElementById("movie" + i).innerHTML += "<div id='info_column'><h2 id='title'> " + title + "</h2> <p id='date'> <strong>Release Date: </strong>" + date + "</p><p id='genres'><strong>Genres: </strong>" + genre_string + "</p> <p id='overview'> <strong>Overview: </strong>" + overview + "</p></div>";
+            
+            document.getElementById("movie" + i).innerHTML += "<button onclick=\"showCast(" + i + ")\" id='cast_button'>Click to see cast info!</button><div id=\"list_cast\"><ul id='cast" + i + "'>";
             get_cast_info(movie_id, i);
-            document.getElementById("movie").innerHTML += "</ul>"
-            document.getElementById("movie").innerHTML += "</p>";
-            document.getElementById("movie").innerHTML += "<p id='overview'> " + overview + "</p>";
-            document.getElementById("movie").innerHTML += "<p id='date'> " + date + "</p>";
-            document.getElementById("movie").innerHTML += "<button id='add_to_wishlist'> Add to wishlist </button>";
-            document.getElementById("movie").innerHTML += "<button id='add_to_watched'> Add to watched </button>";
+            document.getElementById("movie" + i).innerHTML += "</ul></div>"
+            //document.getElementById("movie" + i).innerHTML += "</p>";
+            document.getElementById("movie" + i).innerHTML += "<div id='add_buttons'><button id='add_to_watched" +i + "' onclick='add_to_watched(" + i + ")'>Add to watched</button><button id='add_to_wishlist" + i + "' onclick='add_to_wishlist(" + i + ")'>Add to wishlist</button></div>";
             document.getElementById("show_data").innerHTML += "</div>"
         }
         function getAPI() {
@@ -273,6 +418,10 @@ curl_close($curl);
         }
         
         buildSearch();
+        const box = document.getElementById('show_data');
+
+        const allChildren = box.getElementsByTagName('*').length;
+        console.log("div size: " + allChildren);
         get_cast_info(99861);
 </script>
 
