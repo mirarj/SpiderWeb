@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!doctype html>
 <html>
 <head>
@@ -21,14 +18,18 @@ session_start();
 <h1>My Watched List</h1>
 
 	<?php
+	if (isset($_POST['logout'])) {
+		session_destroy();
+	}
 	if (isset($_SESSION['userid'])){
-		$sql = "SELECT * from watched WHERE";
 		echo "Logged in<br>";
 		echo "<form method='post' action='watched.php'><input type='submit' name='logout' value='Log Out'></form>";
 		echo "DISPLAY LIST";
 	}
 	else{
-		echo "<p class='unavailable'>This page is only available to logged in users. Please <a href='./login.php'>Log In</a> here.</p>";
+		echo "Not logged in<br>";
+		echo "<form method='get' action='login.php'><input type='submit' value='Log In'></form>";
+		echo "<a href='./login.php'><p>Login</p></a>";
 	}	
 	?>
 

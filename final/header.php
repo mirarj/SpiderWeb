@@ -7,7 +7,6 @@ echo "<header>";
     // page title
 	echo "<h1>$pagetitle</h1>";
 	// Log in/out
-	session_start();
 	if (isset($_POST['logout'])) {
 		session_destroy();
 		echo "<script type='text/javascript'>window.location = '$filename'</script>"; // refresh page

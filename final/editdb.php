@@ -51,15 +51,17 @@ foreach ($tables as $table) {
 	}
 }
 
+$sql = "";
 // $sql = "CREATE TABLE users (`id` INT(20) PRIMARY KEY AUTO_INCREMENT, `username` VARCHAR(255) UNIQUE, `email` VARCHAR(255) UNIQUE, `password` VARCHAR(255));";
 // $sql = "ALTER TABLE WatchLater ADD `id` INT(20) PRIMARY KEY AUTO_INCREMENT FIRST";
 // $sql = "ALTER TABLE Watched ADD `id` INT(20) PRIMARY KEY AUTO_INCREMENT FIRST";
+// $sql = "INSERT INTO `Watched`(`id`, `UserId`, `MoveId`, `Review`, `Favorite`) VALUES (DEFAULT,'mjain02','22222','this movie was amazing', '1')";
 // consistent dtype sizes
 // rename move to movie
 // drop empty user
 
-// $x = $conn->query($sql);
-// disp_query($x);
+$x = $conn->query($sql);
+disp_query($x);
 
 ?>
 	
