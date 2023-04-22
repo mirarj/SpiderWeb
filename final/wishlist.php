@@ -9,8 +9,11 @@
 </head>
 
 <body>
-
-<h1>copy from watched.php later</h1>
+    <?php
+    include('./header.php');
+	makeHeader('wishlist.php', 'My Wish List');
+    ?>
+<a href='./editdb.php'>testing page</a>
 
 </body>
 </html>

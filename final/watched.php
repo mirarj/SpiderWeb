@@ -17,27 +17,7 @@ session_start();
 	include('./header.php');
 	makeHeader('watched.php', 'My Watched List');
 ?>
-
-<h1>My Watched List</h1>
-
 	<?php
-	function disp_query($q)
-	{
-		echo "<table><tr>";
-		$fields = $q->fetch_fields();
-		foreach ($fields as $f) {
-			echo "<th>".$f->name."</th>";
-		}
-		echo "</tr>";
-		foreach ($q as $rowid=>$rowdata) {
-			echo "<tr>";
-			foreach ($rowdata as $key=>$value) {
-				echo "<td>$value</td>";
-			}
-			echo "</tr>";
-		}
-		echo "</table>";
-	}
 	//establish connection info
 	$server = "35.212.42.21";
 	$userid = "uaqtg5oezskik";
@@ -64,7 +44,6 @@ session_start();
 
 		echo "<script>";
 			echo "arr = JSON.parse('".$idsarr."');";
-			echo 'console.log(arr);';
 		echo "</script>";
 
 
@@ -75,6 +54,10 @@ session_start();
 		echo "<p class='unavailable'>This page is only available to logged in users. Please <a href='./login.php'>Log In</a> here.</p>";
 	}	
 	?>
+	<script>
+	console.log(arr);
+	console.log("working")
+	</script>
 
 </body>
 </html>

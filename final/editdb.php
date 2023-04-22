@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html>
 <head>
@@ -10,14 +13,17 @@
 
 <body>
 
-<h1>Testing</h1>
-
 <?php
 //establish connection info
+
+include('./header.php');
+makeHeader('editdb.php', 'Testing');
+
 $server = "35.212.42.21";
 $userid = "uaqtg5oezskik";
 $pw = "talissqluser";
 $db = "db4qzjfvgwun4s";
+$conn = new mysqli($server, $userid, $pw, $db);
 
 function disp_query($q)
 {
@@ -37,7 +43,6 @@ function disp_query($q)
 	echo "</table>";
 }
 
-$conn = new mysqli($server, $userid, $pw, $db);
 
 $tables = $conn->query("SHOW TABLES");
 foreach ($tables as $table) {

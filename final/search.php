@@ -11,7 +11,7 @@ session_start();
         <script src="https://kit.fontawesome.com/a7de828ebd.js" crossorigin="anonymous"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>MyMovieNetwork</title>
-        <link rel="stylesheet" href="style.css">
+        <!-- <link rel="stylesheet" href="style.css"> -->
     </head>
 
     
@@ -202,117 +202,15 @@ session_start();
         width: 300px;
     }
 
-    #header {
-        //background-color: #001B2E;
-        height: 80px;
-        border-bottom: 2px solid #001B2E;
-
-    }	
-
-    #search_button {
-        //float: left;
-        display: inline-block;
-        float: right;
-    }
-
-    #user {
-        //background-color: #001B2E;
-        display: inline-block;
-        color: white;
-        padding: 16px;
-        font-size: 16px;
-        border: none;
-        cursor: pointer;
-        color: white;
-    }
-
-    #search_btn {
-        display: inline-block;
-        color: white;
-        padding: 16px;
-        font-size: 16px;
-        border: none;
-        cursor: pointer;
-    }
-
-   
-
-    .cnt {
-        display: none;
-        position: absolute;
-        background-color: #f1f1f1;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
-        text-align: center;
-    }
-
-
-    .cnt a, #log{
-        color: black;
-        padding: 20px 20px;
-        text-decoration: none;
-        display: block;
-
-    }
-
-    #log {
-        margin: 0 auto;
-        padding: 15px 20px;
-    }
-
-    .cnt a:hover {background-color: #ddd;}
-    .cnt #log:hover {background-color: #ddd;}
-
-    #dropdown {
-        position: relative;
-        display: inline-block;
-        //float: left;
-        width: 300px;
-    }
-
-    .show {
-        display:block;
-    }
-
-    header {
-        //background-color: #001B2E;
-    }
-
 </style>
 </head>
 
 
 <body>
-<header>
-<div id="header">
-    <div id="search_button">
-            <a id="search_btn" href="fetch_movies.php"><i class="fa-solid fa-magnifying-glass" style="color: #001B2E;"></i></a>
-    </div>
-            
-    <div id="drowdown">
-        <button id="user" class="user"  onclick="activate_dropdown()"><i class="fa-solid fa-user" style="color: #001B2E;"></i></button>
-        <div id="content" class="cnt">
-            <a href="watched.php">My Watch List</a>
-            <a href="wishlist.php">My Wishlist</a>
-            <a href="rec.php">My Recommendations</a>
-            <a href="connect.php">Connect With others</a>
-            <?php
-                if (isset($_POST['logout'])) {
-                    session_destroy();
-                    echo "<script type='text/javascript'>window.location = '$filename'</script>"; // refresh page
-                }
-                if (isset($_SESSION['userid'])){
-                    echo "<form method='post' action='$filename' class='loginout'><input id='log' type='submit' name='logout' value='Log Out'></form>";
-                }
-                else{
-                    echo "<form method='get' action='login.php' class='loginout'><input id='log' type='submit' value='Log In'></form>";
-                }  
-        ?>
-        </div>
-    </div>          
-</div>
-</header>
+<?php
+    include('./header.php');
+    makeHeader('search.php', 'Search');
+?>
 
 <div id="search">
     <h1>Welcome to SpiderWeb Movies!</h1>
@@ -358,24 +256,6 @@ curl_close($curl);
 
 <script>
 
-        function activate_dropdown() {
-            console.log("activated");
-            document.getElementById("content").classList.toggle("show");
-        }
-
-        // Close the dropdown menu if the user clicks outside of it
-        window.onclick = function(event) {
-            if (!event.target.matches('.user')) {
-                var dropdowns = document.getElementsByClassName("cnt");
-                var i;
-                for (i = 0; i < dropdowns.length; i++) {
-                    var openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show')) {
-                        openDropdown.classList.remove('show');
-                    }
-                }
-            }
-        }
         function get_cast_info(movie_id, i) {
             let URL = "https://api.themoviedb.org/3/movie/"+movie_id+"/credits?api_key=fcabeffb7c941589973c5ba5beb7f636&language=en-US";
                 res = fetch(URL)
