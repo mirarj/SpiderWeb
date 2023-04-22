@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 
 <html>
@@ -294,17 +297,17 @@
             <a href="wishlist.php">My Wishlist</a>
             <a href="rec.php">My Recommendations</a>
             <a href="connect.php">Connect With others</a>
-            <?php	session_start();
-	if (isset($_POST['logout'])) {
-		session_destroy();
-		echo "<script type='text/javascript'>window.location = '$filename'</script>"; // refresh page
-	}
-	if (isset($_SESSION['userid'])){
-		echo "<form method='post' action='$filename' class='loginout'><input id='log' type='submit' name='logout' value='Log Out'></form>";
-	}
-	else{
-		echo "<form method='get' action='login.php' class='loginout'><input id='log' type='submit' value='Log In'></form>";
-    }  
+            <?php
+                if (isset($_POST['logout'])) {
+                    session_destroy();
+                    echo "<script type='text/javascript'>window.location = '$filename'</script>"; // refresh page
+                }
+                if (isset($_SESSION['userid'])){
+                    echo "<form method='post' action='$filename' class='loginout'><input id='log' type='submit' name='logout' value='Log Out'></form>";
+                }
+                else{
+                    echo "<form method='get' action='login.php' class='loginout'><input id='log' type='submit' value='Log In'></form>";
+                }  
         ?>
         </div>
     </div>          
