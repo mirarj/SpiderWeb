@@ -21,6 +21,62 @@
         margin: 0;
         padding: 0;
     }
+
+    body {
+        height: 100%;
+    }
+
+    #search h1 {
+        text-align: center;
+        font-size: 50px;
+        color: #E84855;
+        display: block;
+    }
+
+    #search #h3_div {
+        padding: 30px;
+        width: 400px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    #search h3 {
+        display: block;
+        text-align: center;
+        font-size: 25px;
+        color: #001B2E;
+    }
+
+    #search {
+        //background-color: #E84855;
+        width: 1000px;
+        margin: 0 auto;
+        display: block;
+        margin-top: 40px;
+
+    }
+
+
+    #query {
+        color: black;
+        background-color: #00CFC1;
+        font-size: 30px;
+        width:500px;
+        border: 0px;
+        border-radius: 15px;
+        margin: 0 auto;
+        display: block;
+        margin-top: 30px;
+        padding: 20px;
+        text-align: center;
+        color: #333;
+        -webkit-box-shadow: 0 2px 10px 1px rgba(0,0,0,0.5);
+        box-shadow: 0 2px 10px 1px rgba(0,0,0,0.5);
+    }
+
+    #genre_select {
+
+    }
   
     #cast_button {
         padding: 10px;
@@ -45,10 +101,7 @@
         //display: grid;
         grid-template-columns: repeat(4, 1fr);
     }
-    h1 {
-        text-align: center;
-        color: black;
-    }
+
     #show_data div, p, li, h2, strong, ul {
         background-color: #001B2E;
     }
@@ -259,7 +312,10 @@
 </header>
 
 <div id="search">
-
+    <h1>Welcome to SpiderWeb Movies!</h1>
+    <div id="h3_div">
+        <h3>Search your favourite movies in seconds and find new ones to watch!</h3>
+    </div>
 </div>
 
 
@@ -415,7 +471,7 @@ curl_close($curl);
                     .then (data => 
                     {
 
-						t += "<select name='genre_select' size='1'>";
+						t += "<select name='genre_select' id='genre_select' size='1'>";
                         genres = JSON.parse(data)
 						//document.getElementById("search").innerHTML += "<select name='genre_select' size='1'>";
                         t += "<option> No Selection </option>";
@@ -431,7 +487,7 @@ curl_close($curl);
                     
         }
 
-        function output(movie_id, i, title, img_source, genre_array_php, genres, overview, date, cast_search) {
+        function output(movie_id, i, title, img_source, genre_array_php, genres, overview, date) {
             document.getElementById("show_data").innerHTML += "<div id='movie" + i + "' style='border: 1px solid black'>"
             document.getElementById("movie" + i).innerHTML += "<div id='image_column'> <img id='poster' src='"+"http://image.tmdb.org/t/p/w500/" + img_source + "'> </div>";
             
@@ -470,17 +526,9 @@ curl_close($curl);
             }
 
             else {
-                let year = $("#year").val();
                 let genre = $('select[name="genre_select"]').val();
-                let cast_search = $('#cast').val();
-                console.log("query is: " + query);
-                console.log("year is: " + year);
 
                 let URL = "https://api.themoviedb.org/3/search/movie?api_key=fcabeffb7c941589973c5ba5beb7f636&query=" + query;
-
-                if (year != "") {
-                    URL += "&year=" + year;
-                }
 
                 URL += "&adult=false";
 
@@ -515,7 +563,7 @@ curl_close($curl);
                                 let date = obj["release_date"];
                                 let movie_id = obj["id"];
                             
-                                output(movie_id, i, title, img_source, genre_array_php, genres, overview, date,cast_search);
+                                output(movie_id, i, title, img_source, genre_array_php, genres, overview, date);
                             }
                         }
                         
@@ -534,7 +582,7 @@ curl_close($curl);
                                         let date = obj["release_date"];
                                         let movie_id = obj["id"];
 
-                                        output(movie_id, k, title, img_source, genre_array_php, genres, overview, date, cast_search);                                    }
+                                        output(movie_id, k, title, img_source, genre_array_php, genres, overview, date);                                    }
                                 });
                             }
                         }
