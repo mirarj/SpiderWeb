@@ -18,6 +18,8 @@
     * {
         font-family: Arial, Helvetica, sans-serif;
         background-color: #FFF8F0;
+        margin: 0;
+        padding: 0;
     }
   
     #cast_button {
@@ -126,20 +128,139 @@
         color: #FFF8F0;
         padding: 15px;
         margin:0 auto;
-        display:block;
         margin-bottom: 30px;
         width: 300px;
     }
+
+    #add_buttons button:nth-child(3) {
+        display: none;
+        margin-bottom: 30px;
+        border-radius: 30px;
+        border: 0px;
+        background-color: #AFE1AF;
+        font-size: 25px;
+        color: #FFF8F0;
+        padding: 15px;
+        margin:0 auto;
+        margin-bottom: 30px;
+        width: 300px;
+    }
+
+    #header {
+        //background-color: #001B2E;
+        height: 80px;
+        border-bottom: 2px solid #001B2E;
+
+    }	
+
+    #search_button {
+        //float: left;
+        display: inline-block;
+        float: right;
+    }
+
+    #user {
+        //background-color: #001B2E;
+        display: inline-block;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        color: white;
+    }
+
+    #search_btn {
+        display: inline-block;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+    }
+
+   
+
+    .cnt {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        text-align: center;
+    }
+
+
+    .cnt a, #log{
+        color: black;
+        padding: 20px 20px;
+        text-decoration: none;
+        display: block;
+
+    }
+
+    #log {
+        margin: 0 auto;
+        padding: 15px 20px;
+    }
+
+    .cnt a:hover {background-color: #ddd;}
+    .cnt #log:hover {background-color: #ddd;}
+
+    #dropdown {
+        position: relative;
+        display: inline-block;
+        //float: left;
+        width: 300px;
+    }
+
+    .show {
+        display:block;
+    }
+
+    header {
+        //background-color: #001B2E;
+    }
+
 </style>
 </head>
 
 
 <body>
+<header>
+<div id="header">
+    <div id="search_button">
+            <a id="search_btn" href="fetch_movies.php"><i class="fa-solid fa-magnifying-glass" style="color: #001B2E;"></i></a>
+    </div>
+            
+    <div id="drowdown">
+        <button id="user" class="user"  onclick="activate_dropdown()"><i class="fa-solid fa-user" style="color: #001B2E;"></i></button>
+        <div id="content" class="cnt">
+            <a href="watched.php">My Watch List</a>
+            <a href="wishlist.php">My Wishlist</a>
+            <a href="rec.php">My Recommendations</a>
+            <a href="connect.php">Connect With others</a>
+            <?php	session_start();
+	if (isset($_POST['logout'])) {
+		session_destroy();
+		echo "<script type='text/javascript'>window.location = '$filename'</script>"; // refresh page
+	}
+	if (isset($_SESSION['userid'])){
+		echo "<form method='post' action='$filename' class='loginout'><input id='log' type='submit' name='logout' value='Log Out'></form>";
+	}
+	else{
+		echo "<form method='get' action='login.php' class='loginout'><input id='log' type='submit' value='Log In'></form>";
+    }  
+        ?>
+        </div>
+    </div>          
+</div>
+</header>
 
 <div id="search">
 
 </div>
-    
 
 
 <div id="show_data">
@@ -177,6 +298,25 @@ curl_close($curl);
 
 
 <script>
+
+        function activate_dropdown() {
+            console.log("activated");
+            document.getElementById("content").classList.toggle("show");
+        }
+
+        // Close the dropdown menu if the user clicks outside of it
+        window.onclick = function(event) {
+            if (!event.target.matches('.user')) {
+                var dropdowns = document.getElementsByClassName("cnt");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
         function get_cast_info(movie_id, i) {
             let URL = "https://api.themoviedb.org/3/movie/"+movie_id+"/credits?api_key=fcabeffb7c941589973c5ba5beb7f636&language=en-US";
                 res = fetch(URL)
@@ -218,24 +358,58 @@ curl_close($curl);
         
 
         function add_to_watched(i) {
-            console.log("clicked" + i);
+            //console.log("clicked" + i);
             console.log("$('#add_to_watched'):eq(i).html(): " + $("#add_to_watched" + i).html());
             if ($("#add_to_watched" + i).html() == "Add to watched") {
-                console.log("changing");
-                $("#add_to_watched" + i).html("Added to watched");
+                $("#add_to_watched" + i).html("Remove from watched");
+                $("#add_to_watched" + i).css("background-color","red");
+                $("#add_to_wishlist" + i).css("display","none");
+                $("#fav" + i).css("display","block");
+                
+            }
+            else if ($("#add_to_watched" + i).html() == "Remove from watched") {
+   
+                $("#add_to_watched" + i).html("Add to watched");
+                $("#add_to_watched" + i).css("background-color","#E84855");
+                $("#add_to_wishlist" + i).css("display","block");
+                $("#fav" + i).html("Add to favourites");
+                $("#fav" + i).css("display","none");
+
+            }
+        }
+
+
+        function add_to_fav(i) {
+            if ($("#fav" + i).html() == "Add to favourites") {
+                console.log("clicked fav")
+                $("#fav" + i).html("Remove from favourites");
+                $("#fav" + i).css("background-color","red");
+            }
+            else if ($("#fav" + i).html() == "Remove from favourites") {
+                $("#fav" + i).html("Add to favourites");
+                $("#fav" + i).css("background-color","#AFE1AF");
             }
         }
 
         function add_to_wishlist(i) {
             if ($("#add_to_wishlist" + i).html() == "Add to wishlist") {
-                $("#add_to_wishlist" + i).html("Added to wishlist");
+                $("#add_to_wishlist" + i).html("Remove from wishlist");
+                $("#add_to_wishlist" + i).css("background-color","red");
+                $("#add_to_watched" + i).css("display","none");
+            }
+            else if ($("#add_to_wishlist" + i).html() == "Remove from wishlist") {
+   
+                $("#add_to_wishlist" + i).html("Add to wishlist");
+                $("#add_to_wishlist" + i).css("background-color","#00CFC1");
+                $("#add_to_watched" + i).css("display","block");
+
             }
             
         }
 
         function buildSearch() {
             let URL = "https://api.themoviedb.org/3/genre/movie/list?api_key=fcabeffb7c941589973c5ba5beb7f636&language=en-US";
-            let t = "<input name='query' id='query' type='text' placeholder='Enter search query here'><input name='year' id='year' type='text' placeholder='Enter year of release here'><input name='cast' id='cast' type='text' placeholder='Enter actor name here'>";
+            let t = "<input name='query' id='query' type='text' placeholder='Enter search query here'>";
 				res = fetch(URL)
                     .then (res => res.text())
                     .then (data => 
@@ -283,7 +457,7 @@ curl_close($curl);
             get_cast_info(movie_id, i);
             document.getElementById("movie" + i).innerHTML += "</ul></div>"
             //document.getElementById("movie" + i).innerHTML += "</p>";
-            document.getElementById("movie" + i).innerHTML += "<div id='add_buttons'><button id='add_to_watched" +i + "' onclick='add_to_watched(" + i + ")'>Add to watched</button><button id='add_to_wishlist" + i + "' onclick='add_to_wishlist(" + i + ")'>Add to wishlist</button></div>";
+            document.getElementById("movie" + i).innerHTML += "<div id='add_buttons'><button id='add_to_watched" +i + "' onclick='add_to_watched(" + i + ")'>Add to watched</button><button id='add_to_wishlist" + i + "' onclick='add_to_wishlist(" + i + ")'>Add to wishlist</button><button id='fav" + i + "' onclick='add_to_fav(" + i + ")'>Add to favourites</button></div>";
             document.getElementById("show_data").innerHTML += "</div>"
         }
         function getAPI() {
@@ -418,11 +592,7 @@ curl_close($curl);
         }
         
         buildSearch();
-        const box = document.getElementById('show_data');
-
-        const allChildren = box.getElementsByTagName('*').length;
-        console.log("div size: " + allChildren);
-        get_cast_info(99861);
+       
 </script>
 
 
