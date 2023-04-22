@@ -52,7 +52,12 @@ foreach ($tables as $table) {
 }
 
 // $sql = "CREATE TABLE users (`id` INT(20) PRIMARY KEY AUTO_INCREMENT, `username` VARCHAR(255) UNIQUE, `email` VARCHAR(255) UNIQUE, `password` VARCHAR(255));";
-// $sql = "ALTER TABLE
+// $sql = "ALTER TABLE WatchLater ADD `id` INT(20) PRIMARY KEY AUTO_INCREMENT FIRST";
+// $sql = "ALTER TABLE Watched ADD `id` INT(20) PRIMARY KEY AUTO_INCREMENT FIRST";
+// consistent dtype sizes
+// rename move to movie
+// drop empty user
+
 // $x = $conn->query($sql);
 // disp_query($x);
 

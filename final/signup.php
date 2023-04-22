@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SpiderWeb Movies - Sign Up</title>
 <style>
 </style>
@@ -15,19 +16,9 @@
 	makeHeader('signup.php', 'Sign Up');
 ?>
 
-
-
-<form method="post" id="form1" action="signup.php">
-	<label for="em">Email</label> <br />
-	<input type='text' name='email' id='em'><br>
-	<label for="un">Username</label> <br />
-	<input type='text' name='username' id='un'><br>
-	<label for="pw">Password</label> <br />
-	<input type='password' name='password' id='pw'><br>
-	<input type = "submit" value = "Create Account" />
-</form>
 <?php
-
+	$helptext = "<p id='help'>Already have an account? <a href='./login.php'>Log in here</a>.</p>";
+	$errortext = "<p id='error'></p>";
 	if ($_POST) {
 		//establish connection info	
 		$server = "35.212.42.21";
@@ -40,18 +31,15 @@
 		$result = $conn->query($sql);
 		$continue = true;
 		$un = $_POST['username'];
-		// username cannot be an email
 		$em = $_POST['email'];
-		// validate email regex
 		$pw = hash("sha256", $_POST['password']);
 		foreach ($result as $rowid=>$rowdata) {
 			if ($rowdata['username'] == $un) {
-				echo "This username already exists. Please choose a different username or <a href='./login.php'>Log In</a> here.";
-				// An account with this email address already exists. Please <a href='./login.php'>Log In</a> here.
+				$helptext = "<p id='help'>This username already exists. Please choose a different username or <a href='./login.php'>Log In</a> here.</p>";
 				$continue = false;
 			}
 			if ($rowdata['email'] == $em) {
-				echo "An account with this email address already exists. Please <a href='./login.php'>Log In</a> here.";
+				$helptext = "<p id='help'>An account with this email address already exists. Please <a href='./login.php'>Log In</a> here.</p>";
 				$continue = false;
 			}
 		}
@@ -60,6 +48,8 @@
 				$sql = "INSERT INTO `users`(`id`, `username`, `password`, `email`) VALUES ('DEFAULT','".$un."','".$pw."','".$em."')";
 				// echo $sql;
 				$result = $conn->query($sql);
+				echo "<script>alert('Thank you! Your account has been created.');";
+				echo "window.location = 'login.php'</script>";
 			}		
 
 		$conn->close();
@@ -67,20 +57,71 @@
 	}
 
 ?>
+<div class='login'>
+<form method="post" id="signup_form" class='ls' action="signup.php">
+	<label for="em">Email</label>
+	<input type='text' name='email' id='em'>
+	<label for="un">Username</label>
+	<input type='text' name='username' id='un'>
+	<label for="pw">Password</label>
+	<input type='password' name='password' id='pw'>
+	<?php
+	echo $errortext;
+	?>
+	<input type = "submit" value = "Create Account" />
+</form>
+<?php
+echo $helptext;
+?>
 
 <script>
-	form_obj = document.querySelector("#form1");
+	form_obj = document.querySelector("#signup_form");
+	helptext = document.querySelector("#help");
+	errortext = document.querySelector("#error");
+	
 
 	form_obj.onsubmit = function() {
-		alert("am i even here")
-		<?php
-		echo "document.write(php inside js?);"
-		?>
+
+		em = document.querySelector("#em").value;
+		un = document.querySelector("#un").value;
+		pw = document.querySelector("#pw").value;
+
+		
+		// validate name is entered
+
+		if (em=="")
+		{
+			errortext.innerHTML = "Please enter an email address.";
+			return false;
+		}
+		if (un=="")
+		{
+			errortext.innerHTML = "Please enter a username.";
+			return false;
+		}
+		else if (pw=="")
+		{
+			errortext.innerHTML = "Please enter a password.";
+			return false;
+		}
+		else if (!(/^\w+(\.\w+)*@[a-zA-Z]+\.[a-zA-Z]+(\.[a-zA-Z]+)*$/.test(em))) {
+			errortext.innerHTML = "Please enter a valid email address.";
+			return false;
+		}
+		else if ((/\W/.test(un))) {
+			errortext.innerHTML = "Your username cannot contain special characters other than '_'.";
+			return false;
+		}
+		else if (pw.length<8) {
+			errortext.innerHTML = "Your password must be at least 8 characters long.";
+			return false;
+		}
+
+		return true;
 	}
-		document.write("regular doc write")
 </script>
 
-<a href='./login.php'><p>Login</p></a>
+</div>
 
 </body>
 </html>

@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SpiderWeb Movies - Log In</title>
 <style>
 </style>
@@ -16,17 +17,10 @@
 	makeHeader('login.php', 'Log In');
 ?>
 
-
-<form method="post" id="form1" onsubmit='login.php' action="login.php">
-	<label for="un">Username/Email</label> <br />
-	<input type='text' name='username' id='un'><br>
-	<label for="pw">Password</label> <br />
-	<input type='password' name='password' id='pw'><br>
-	<input type = "submit" value = "Log In" />
-</form>
-
 <?php
 
+	$helptext = "<p id='help'>Don't have an account? <a href='./signup.php'>Sign up here</a>.</p>";
+	$errortext = "<p id='error'></p>";
 	if ($_POST) {
 		//establish connection info
 		$server = "35.212.42.21";
@@ -48,12 +42,12 @@
 				foreach ($result2 as $rowid2=>$rowdata2) {
 					if ($pw == $rowdata2['password']) {
 						$_SESSION['userid'] = $unem;
-						echo "success, redirect to profile page for ".$_SESSION['userid'];
-						header('profile.php');
+						// echo "success, redirect to profile page for ".$_SESSION['userid'];
+						// header('profile.php');
 						echo '<script type="text/javascript">window.location = "profile.php"</script>';
 					}
 					else {
-						echo "Incorrect password.";
+						echo "<p id='error'>Incorrect password.</p>";
 					}
 				}
 			}
@@ -64,12 +58,12 @@
 				foreach ($result2 as $rowid2=>$rowdata2) {
 					if ($pw == $rowdata2['password']) {
 						$_SESSION['userid'] = $rowdata2['username'];
-						echo "success, redirect to profile page for ".$_SESSION['userid'];
-						header('profile.php');
+						// echo "success, redirect to profile page for ".$_SESSION['userid'];
+						// header('profile.php');
 						echo '<script type="text/javascript">window.location = "profile.php"</script>';
 					}
 					else {
-						echo "Incorrect password.";
+						$errortext = "<p id='error'>Incorrect password.</p>";
 					}
 
 				}
@@ -77,7 +71,7 @@
 		}
 
 		if (!$found) {
-			echo "We don't have an account with this email address or username. Please <a href='./signup.php'>Create an account</a> here.";
+			$helptext = "<p id='help'>We don't have an account with this email address or username. Please <a href='./signup.php'>Create an account</a> here.</p>";
 		}
 
 		$conn->close();
@@ -85,52 +79,49 @@
 	}
 
 ?>
+<div class='login'>
+<form method="post" id="login_form" class='ls' action="login.php">
+	<label for="un">Username/Email</label>
+	<input type='text' name='username' id='un'>
+	<label for="pw">Password</label>
+	<input type='password' name='password' id='pw'>
+	<?php
+	echo $errortext;
+	?>
+	<input type = "submit" value = "Log In" />
+</form>
+<?php
+	echo $helptext;
+?>
+
 
 <script>
 
-	form_obj = document.querySelector("#form1");
 
+	form_obj = document.querySelector("#login_form");
+	errortext = document.querySelector("#error");
+	
 	form_obj.onsubmit = function() {
-		
-		// validate name is entered
-		if (userinfo[0].value=='' || userinfo[1].value=='') {
-			alert("Please enter your full name.");
+		un = document.querySelector("#un").value;
+		pw = document.querySelector("#pw").value;
+
+		if (un=="")
+		{
+			errortext.innerHTML = "Please enter a username or an email address.";
 			return false;
 		}
-
-		// validate some item ordered
-		something_ordered = false;
-		item_quants.forEach(e => {
-			if (e.value != '0') {
-				something_ordered = true;
-			}
-		});
-		if (!something_ordered) {
-			alert("Please order at least one item.");
-			return false;
-		}
-
-		// validate time
-		now = new Date();
-		date.value = now.getTimezoneOffset();
-
-		open = new Date();
-		open.setHours(20,0,0,0);
-		close = new Date();
-		close.setHours(2,30,0,0);
-
-		if (now>close && now<open) {
-			alert("Sorry, we only accept orders between 8:00 PM and 2:30 AM.")
+		else if (pw=="")
+		{
+			errortext.innerHTML = "Please enter a password.";
 			return false;
 		}
 
 		return true;
-
 	}
 
 </script>
 
-<a href='./signup.php'><p>Create Account</p></a>
+</div>
 
 </body>
 </html>

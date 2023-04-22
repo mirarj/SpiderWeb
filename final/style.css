@@ -30,6 +30,7 @@ h1 {
 	width: 40%;
 	min-width: 300px;
 	float: center;
+	max-height: 1em;
 }
 .subh1 {
 	display: block;
@@ -55,9 +56,16 @@ a:hover {font-weight: bolder;}
 td {padding: 0.5em; border: 1px solid;}
 
 header {display: flex;}
-/* form #login {display: inline;}
-form #searchbar {display: inline;} */
-form #searchbar input[type='submit'] {background-image: url('./images/search-icon.png'); background-size: contain; background-repeat: no-repeat;}
+body {text-align: center;}
+div.login {display:flex; flex-direction:column; align-items: center}
+p {text-align:center}
+form.ls {padding: 1em; 	border-radius: 30px; border: 2px double #E84855; position:center; margin:auto; display:flex; flex-direction:column; align-items: center; font-size:24px; width:70%; max-width: 400px;}
+form.ls label {font-weight: bold; margin-bottom: 0.5em;}
+/* form.ls input {margin:1em;} */
+form.ls input[type='text'],input[type='password'] {border-top: none; border-left: none; border-right: none; background-color: #E8485500; height: 1.5em; width: 70%; margin-bottom: 2em}
+form.ls input[type='submit'] {padding:0.5em; margin:auto; font-size: large; border: 2px solid; cursor: pointer; border-radius: 10px;}
+#help {font-size: 24px; margin-top: 1em;}
+#error {font-size: 24px; color: red; font-weight: bold; margin-bottom: 0.5em;}
 
 /* rgb(#fff8f0)
 rgb(#e84855)

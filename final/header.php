@@ -2,14 +2,8 @@
 
 function makeHeader($filename, $pagetitle) {
 echo "<header>";
-	// Home icon
-	echo "<a href='./index.php'><img src='./images/swico.ico'></a>";
-    // Search bar
-    echo "<form method='get' id='searchbar' action='search.php'>";
-        echo "<label for='em'>Search</label>";
-        echo "<input type='text' name='query'>";
-        echo "<input type = 'submit' value = 'icon'>";
-    echo "</form>";
+	// Home/search icon
+	echo "<a href='./search.php'><img src='./images/swico.ico'></a>";
     // page title
 	echo "<h1>$pagetitle</h1>";
 	// Log in/out
