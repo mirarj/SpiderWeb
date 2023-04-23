@@ -123,7 +123,7 @@ echo "<header>";
 				echo "<form method='post' action='$filename' class='loginout'><input type='submit' id='log' name='logout' value='Log Out'></form>";
 			}
 			else{
-				echo "<form method='get' action='login.php' class='loginout'><input type='submit' id='log' value='Log In'></form>";
+				echo "<form method='get' action='login.php' class='loginout'><input type='submit' id='log' value='Log In'><input type='hidden' name='origin' value='".$filename."'></form>";
 			}
 		echo "</div>";
 	echo "</div>";

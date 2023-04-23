@@ -1,5 +1,5 @@
 <?php
-    $server = "localhost";
+    $server = "35.212.42.21";
     $userid = "uaqtg5oezskik";
     $pw = "talissqluser";
     $db = "db4qzjfvgwun4s";

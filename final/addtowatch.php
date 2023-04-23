@@ -1,5 +1,5 @@
 <?php
-    $server = "localhost";
+    $server = "35.212.42.21";
     $userid = "uaqtg5oezskik";
     $pw = "talissqluser";
     $db = "db4qzjfvgwun4s";
@@ -20,7 +20,7 @@
 
    
 
-    $sql = "INSERT INTO `Watched` (`id`, `UserId`, `MovieId`, `Review`, `Favorite`) VALUES (NULL, '$user_id', '$movie_id', '', '')";
+    $sql = "INSERT INTO `Watched` (`id`, `UserId`, `MovieId`, `Review`, `Favorite`) VALUES (DEFAULT, '$user_id', '$movie_id', DEFAULT, DEFAULT)";
     
     $result = $conn->query($sql);
 

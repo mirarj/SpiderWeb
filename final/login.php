@@ -47,9 +47,13 @@ session_start();
 				foreach ($result2 as $rowid2=>$rowdata2) {
 					if ($pw == $rowdata2['password']) {
 						$_SESSION['userid'] = $unem;
-						// echo "success, redirect to profile page for ".$_SESSION['userid'];
-						// header('profile.php');
-						echo '<script type="text/javascript">window.location = "search.php"</script>';
+						if (isset($_POST['origin'])){
+							$redirect = $_POST['origin'];
+						}
+						else {
+							$redirect = 'search.php';
+						}
+						echo '<script type="text/javascript">window.location = "'.$redirect.'"</script>';
 					}
 					else {
 						echo "<p id='error'>Incorrect password.</p>";
@@ -63,9 +67,13 @@ session_start();
 				foreach ($result2 as $rowid2=>$rowdata2) {
 					if ($pw == $rowdata2['password']) {
 						$_SESSION['userid'] = $rowdata2['username'];
-						// echo "success, redirect to profile page for ".$_SESSION['userid'];
-						// header('profile.php');
-						echo '<script type="text/javascript">window.location = "search.php"</script>';
+						if (isset($_GET['origin'])){
+							$redirect = $_GET['origin'];
+						}
+						else {
+							$redirect = 'search.php';
+						}
+						echo '<script type="text/javascript">window.location = "'.$redirect.'"</script>';
 					}
 					else {
 						$errortext = "<p id='error'>Incorrect password.</p>";
@@ -90,6 +98,7 @@ session_start();
 	<input type='text' name='username' id='un'>
 	<label for="pw">Password</label>
 	<input type='password' name='password' id='pw'>
+	<input type='hidden' name='origin' value='<?php echo $_GET['origin']?>'>
 	<?php
 	echo $errortext;
 	?>

@@ -9,11 +9,9 @@ session_start();
 	    <meta charset="utf-8"/>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://kit.fontawesome.com/a7de828ebd.js" crossorigin="anonymous"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>MyMovieNetwork</title>
-        <link rel="stylesheet" href="style.css">
-
+        <!-- <link rel="stylesheet" href="style.css"> -->
     </head>
 
     
@@ -204,117 +202,15 @@ session_start();
         width: 300px;
     }
 
-    #header {
-        //background-color: #001B2E;
-        height: 80px;
-        border-bottom: 2px solid #001B2E;
-
-    }	
-
-    #search_button {
-        //float: left;
-        display: inline-block;
-        float: right;
-    }
-
-    #user {
-        //background-color: #001B2E;
-        display: inline-block;
-        color: white;
-        padding: 16px;
-        font-size: 16px;
-        border: none;
-        cursor: pointer;
-        color: white;
-    }
-
-    #search_btn {
-        display: inline-block;
-        color: white;
-        padding: 16px;
-        font-size: 16px;
-        border: none;
-        cursor: pointer;
-    }
-
-   
-
-    .cnt {
-        display: none;
-        position: absolute;
-        background-color: #f1f1f1;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
-        text-align: center;
-    }
-
-
-    .cnt a, #log{
-        color: black;
-        padding: 20px 20px;
-        text-decoration: none;
-        display: block;
-
-    }
-
-    #log {
-        margin: 0 auto;
-        padding: 15px 20px;
-    }
-
-    .cnt a:hover {background-color: #ddd;}
-    .cnt #log:hover {background-color: #ddd;}
-
-    #dropdown {
-        position: relative;
-        display: inline-block;
-        //float: left;
-        width: 300px;
-    }
-
-    .show {
-        display:block;
-    }
-
-    header {
-        //background-color: #001B2E;
-    }
-
 </style>
 </head>
 
 
 <body>
-<header>
-<div id="header">
-    <div id="search_button">
-            <a id="search_btn" href="fetch_movies.php"><i class="fa-solid fa-magnifying-glass" style="color: #001B2E;"></i></a>
-    </div>
-            
-    <div id="drowdown">
-        <button id="user" class="user"  onclick="activate_dropdown()"><i class="fa-solid fa-user" style="color: #001B2E;"></i></button>
-        <div id="content" class="cnt">
-            <a href="watched.php">My Watch List</a>
-            <a href="wishlist.php">My Wishlist</a>
-            <a href="rec.php">My Recommendations</a>
-            <a href="connect.php">Connect With others</a>
-            <?php	session_start();
-	if (isset($_POST['logout'])) {
-		session_destroy();
-		echo "<script type='text/javascript'>window.location = '$filename'</script>"; // refresh page
-	}
-	if (isset($_SESSION['userid'])){
-		echo "<form method='post' action='$filename' class='loginout'><input id='log' type='submit' name='logout' value='Log Out'></form>";
-	}
-	else{
-		echo "<form method='get' action='login.php' class='loginout'><input id='log' type='submit' value='Log In'></form>";
-    }  
-        ?>
-        </div>
-    </div>          
-</div>
-</header>
+<?php
+    include('./header.php');
+    makeHeader('search.php', 'Search');
+?>
 
 <div id="search">
     <h1>Welcome to SpiderWeb Movies!</h1>
@@ -360,24 +256,6 @@ curl_close($curl);
 
 <script>
 
-        function activate_dropdown() {
-            console.log("activated");
-            document.getElementById("content").classList.toggle("show");
-        }
-
-        // Close the dropdown menu if the user clicks outside of it
-        window.onclick = function(event) {
-            if (!event.target.matches('.user')) {
-                var dropdowns = document.getElementsByClassName("cnt");
-                var i;
-                for (i = 0; i < dropdowns.length; i++) {
-                    var openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show')) {
-                        openDropdown.classList.remove('show');
-                    }
-                }
-            }
-        }
         function get_cast_info(movie_id, i) {
             let URL = "https://api.themoviedb.org/3/movie/"+movie_id+"/credits?api_key=fcabeffb7c941589973c5ba5beb7f636&language=en-US";
                 res = fetch(URL)
@@ -418,7 +296,14 @@ curl_close($curl);
 
         
 
-        function add_to_watched(i, movie_id) {
+        function add_to_watched(i) {
+            <?php
+            if (!isset($_SESSION['userid'])){
+                $msg = "Please <a href='./login.php'>log In</a> here to add to your watchlist";
+                echo "alert($msg);";
+                echo "return;";
+            }
+            ?>
             //console.log("clicked" + i);
             console.log("$('#add_to_watched'):eq(i).html(): " + $("#add_to_watched" + i).html());
             if ($("#add_to_watched" + i).html() == "Add to watched") {
@@ -426,15 +311,6 @@ curl_close($curl);
                 $("#add_to_watched" + i).css("background-color","red");
                 $("#add_to_wishlist" + i).css("display","none");
                 $("#fav" + i).css("display","block");
-                $.ajax({
-                    url: "addtowatch.php",
-                    type: "POST",
-                    data: {
-                        movieid: movie_id,
-                        userid: "tali"
-                    }
-
-                });
                 
             }
             else if ($("#add_to_watched" + i).html() == "Remove from watched") {
@@ -444,96 +320,36 @@ curl_close($curl);
                 $("#add_to_wishlist" + i).css("display","block");
                 $("#fav" + i).html("Add to favourites");
                 $("#fav" + i).css("display","none");
-                $.ajax({
-                    url: "removefromwatch.php",
-                    type: "POST",
-                    data: {
-                        movieid: movie_id,
-                        userid: "tali"
-                    }
-
-                });
-                $.ajax({
-                    url: "removefromfavs.php",
-                    type: "POST",
-                    data: {
-                        movieid: movie_id,
-                        userid: "tali"
-                    }
-
-                });
 
             }
-
-            
-                
         }
 
 
-        function add_to_fav(i, movie_id) {
+        function add_to_fav(i) {
             if ($("#fav" + i).html() == "Add to favourites") {
                 console.log("clicked fav")
                 $("#fav" + i).html("Remove from favourites");
                 $("#fav" + i).css("background-color","red");
-                $.ajax({
-                    url: "addtofaves.php",
-                    type: "POST",
-                    data: {
-                        movieid: movie_id,
-                        userid: "tali"
-                    }
-
-                });
             }
             else if ($("#fav" + i).html() == "Remove from favourites") {
                 $("#fav" + i).html("Add to favourites");
                 $("#fav" + i).css("background-color","#AFE1AF");
-                $.ajax({
-                    url: "removefromfavs.php",
-                    type: "POST",
-                    data: {
-                        movieid: movie_id,
-                        userid: "tali"
-                    }
-
-                });
             }
-
-            
         }
 
-        function add_to_wishlist(i, movie_id) {
+        function add_to_wishlist(i) {
             if ($("#add_to_wishlist" + i).html() == "Add to wishlist") {
                 $("#add_to_wishlist" + i).html("Remove from wishlist");
                 $("#add_to_wishlist" + i).css("background-color","red");
                 $("#add_to_watched" + i).css("display","none");
-                $.ajax({
-                    url: "addtowish.php",
-                    type: "POST",
-                    data: {
-                        movieid: movie_id,
-                        userid: "tali"
-                    }
-
-                });
             }
             else if ($("#add_to_wishlist" + i).html() == "Remove from wishlist") {
    
                 $("#add_to_wishlist" + i).html("Add to wishlist");
                 $("#add_to_wishlist" + i).css("background-color","#00CFC1");
                 $("#add_to_watched" + i).css("display","block");
-                $.ajax({
-                    url: "removefromwish.php",
-                    type: "POST",
-                    data: {
-                        movieid: movie_id,
-                        userid: "tali"
-                    }
 
-                });
             }
-
-            
             
         }
 
@@ -587,59 +403,8 @@ curl_close($curl);
             get_cast_info(movie_id, i);
             document.getElementById("movie" + i).innerHTML += "</ul></div>"
             //document.getElementById("movie" + i).innerHTML += "</p>";
-            document.getElementById("movie" + i).innerHTML += "<div id='add_buttons'><button id='add_to_watched" +i + "' onclick='add_to_watched(" + i + ", " + movie_id + ")'>Add to watched</button><button id='add_to_wishlist" + i + "' onclick='add_to_wishlist(" + i + ", " + movie_id + ")'>Add to wishlist</button><button id='fav" + i + "' onclick='add_to_fav(" + i + ", " + movie_id + ")'>Add to favourites</button></div>";
+            document.getElementById("movie" + i).innerHTML += "<div id='add_buttons'><button id='add_to_watched" +i + "' onclick='add_to_watched(" + i + ")'>Add to watched</button><button id='add_to_wishlist" + i + "' onclick='add_to_wishlist(" + i + ")'>Add to wishlist</button><button id='fav" + i + "' onclick='add_to_fav(" + i + ")'>Add to favourites</button></div>";
             document.getElementById("show_data").innerHTML += "</div>"
-            var isWatch = false;
-            $.ajax({
-                    url: "iswatchpresent.php",
-                    type: "POST",
-                    data: {
-                        movieid: movie_id,
-                        userid: "tali"
-                    },
-                    success: function(response){
-                        if (response=='true'){
-                            $("#add_to_watched" + i).html("Remove from watched");
-                            $("#add_to_watched" + i).css("background-color","red");
-                            $("#add_to_wishlist" + i).css("display","none");
-                            $("#fav" + i).css("display","block");
-                            isWatch = true;
-                        }
-                    }
-
-        });
-        $.ajax({
-                    url: "isfavepresent.php",
-                    type: "POST",
-                    data: {
-                        movieid: movie_id,
-                        userid: "tali"
-                    },
-                    success: function(response){
-                        if (response=='true'){
-                            $("#fav" + i).html("Remove from favourites");
-                            $("#fav" + i).css("background-color","red");
-                        }
-                    }
-
-        });
-        $.ajax({
-                    url: "iswishpresent.php",
-                    type: "POST",
-                    data: {
-                        movieid: movie_id,
-                        userid: "tali"
-                    },
-                    success: function(response){
-                        if (response=='true' && isWatch==false){
-                            $("#add_to_wishlist" + i).html("Remove from wishlist");
-                            $("#add_to_wishlist" + i).css("background-color","red");
-                            $("#add_to_watched" + i).css("display","none");
-                        }
-                    }
-
-        });
-        
         }
         function getAPI() {
 
