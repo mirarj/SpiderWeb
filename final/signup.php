@@ -60,7 +60,7 @@ session_start();
 	}
 
 ?>
-<div class='login'>
+<div class='ls'>
 <form method="post" id="signup_form" class='ls' action="signup.php">
 	<label for="em">Email</label>
 	<input type='text' name='email' id='em'>

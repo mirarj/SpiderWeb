@@ -15,8 +15,6 @@
 	makeHeader('watched.php', 'My Watched List');
 ?>
 
-<h1>My Watched List</h1>
-
 	<?php
 	if (isset($_POST['logout'])) {
 		session_destroy();

@@ -8,6 +8,8 @@ session_start();
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SpiderWeb Movies - Log In</title>
 <style>
+	body {text-align: center;}
+	p {text-align:center}
 </style>
 <link rel='stylesheet' href='style.css'>
 </head>
@@ -47,7 +49,7 @@ session_start();
 						$_SESSION['userid'] = $unem;
 						// echo "success, redirect to profile page for ".$_SESSION['userid'];
 						// header('profile.php');
-						echo '<script type="text/javascript">window.location = "profile.php"</script>';
+						echo '<script type="text/javascript">window.location = "search.php"</script>';
 					}
 					else {
 						echo "<p id='error'>Incorrect password.</p>";
@@ -63,7 +65,7 @@ session_start();
 						$_SESSION['userid'] = $rowdata2['username'];
 						// echo "success, redirect to profile page for ".$_SESSION['userid'];
 						// header('profile.php');
-						echo '<script type="text/javascript">window.location = "profile.php"</script>';
+						echo '<script type="text/javascript">window.location = "search.php"</script>';
 					}
 					else {
 						$errortext = "<p id='error'>Incorrect password.</p>";
@@ -82,7 +84,7 @@ session_start();
 	}
 
 ?>
-<div class='login'>
+<div class='ls'>
 <form method="post" id="login_form" class='ls' action="login.php">
 	<label for="un">Username/Email</label>
 	<input type='text' name='username' id='un'>
