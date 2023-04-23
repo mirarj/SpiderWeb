@@ -28,7 +28,7 @@ session_start();
 	if (isset($_SESSION['userid'])){
 		$curruser = $_SESSION['userid'];
 		// $sql = "SELECT MovieId from Watched WHERE UserId='".$curruser."'";
-		$sql = "SELECT MovieId from Watched WHERE UserId='tali'";
+		$sql = "SELECT MovieId from Watched WHERE UserId='".$curruser."'";
 		$q = $conn->query($sql);
 
 		foreach ($q as $rowid=>$rowdata) {
@@ -36,27 +36,20 @@ session_start();
 				$ids[$rowid] = $value;
 			}
 		}
-		foreach ($ids as $id) {
-			echo $id."<br>";
-		}
-
 		$idsarr = json_encode($ids);
 
 		echo "<script>";
 			echo "arr = JSON.parse('".$idsarr."');";
 		echo "</script>";
-
-
-		echo "Logged in<br>";
-		echo "<form method='post' action='watched.php'><input type='submit' name='logout' value='Log Out'></form>";
 	}
 	else{
 		echo "<p class='unavailable'>This page is only available to logged in users. Please <a href='./login.php'>Log In</a> here.</p>";
 	}	
 	?>
 	<script>
-	console.log(arr);
-	console.log("working")
+		// display here
+		document.write(JSON.stringify(arr))
+		console.log(arr);
 	</script>
 
 </body>

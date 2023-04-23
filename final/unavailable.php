@@ -15,21 +15,7 @@
 	makeHeader('watched.php', 'My Watched List');
 ?>
 
-	<?php
-	if (isset($_POST['logout'])) {
-		session_destroy();
-	}
-	if (isset($_SESSION['userid'])){
-		echo "Logged in<br>";
-		echo "<form method='post' action='watched.php'><input type='submit' name='logout' value='Log Out'></form>";
-		echo "DISPLAY LIST";
-	}
-	else{
-		echo "Not logged in<br>";
-		echo "<form method='get' action='login.php'><input type='submit' value='Log In'></form>";
-		echo "<a href='./login.php'><p>Login</p></a>";
-	}	
-	?>
+<p class='unavailable'>This page is only available to logged in users. Please <a href='./login.php'>Log In</a> here.</p>
 
 </body>
 </html>
