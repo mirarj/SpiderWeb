@@ -7,7 +7,7 @@
     <head>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+    <title>Recommendations</title>
     <link rel='stylesheet' href='style.css'>
     <style>
         * {
