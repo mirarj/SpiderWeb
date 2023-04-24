@@ -38,9 +38,8 @@ session_start();
 		}
 		$idsarr = json_encode($ids);
 
-		echo "<script>";
-			echo "arr = JSON.parse('".$idsarr."');";
-		echo "</script>";
+		echo "<script>const wishlist_id = JSON.parse('".$idsarr."');";
+    	echo "</script>";
 	}
 	else{
 		echo "<p class='unavailable'>This page is only available to logged in users. Please <a href='./login.php'>Log In</a> here.</p>";
