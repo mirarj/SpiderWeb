@@ -147,24 +147,17 @@
     $db = "db4qzjfvgwun4s";
     $conn = new mysqli($server, $userid, $pw, $db);
 
-    if (isset($_SESSION['userid'])){
-		$curruser = $_SESSION['userid'];
-		$sql = "SELECT MovieId from Watched WHERE UserId='".$curruser."'";
-		$q = $conn->query($sql);
-		$watchedids = [];
-		foreach ($q as $rowid=>$rowdata) {
-			foreach ($rowdata as $key=>$value) {
-				$watchedids[$rowid] = $value;
-			}
+	$sql = "SELECT MovieId from Watched WHERE UserId='".$curruser."'";
+    $q = $conn->query($sql);
+    $watchedids = [];
+    foreach ($q as $rowid=>$rowdata) {
+        foreach ($rowdata as $key=>$value) {
+            $watchedids[$rowid] = $value;
+        }
     }
     $watchedids_json = json_encode($watchedids);
 
-		echo "<script>const wishlist_id = JSON.parse('".$watchedids_json."');";
-    	echo "</script>";
-	}
-	else{
-		echo "<p class='unavailable'>This page is only available to logged in users. Please <a href='./login.php'>Log In</a> here.</p>";
-	}	
+    echo "<script>const wishlist_id = JSON.parse('".$watchedids_json."');</script>";
 ?>
     <script>
 
