@@ -27,18 +27,17 @@ session_start();
 			
 	if (isset($_SESSION['userid'])){
 		$curruser = $_SESSION['userid'];
-		// $sql = "SELECT MovieId from Watched WHERE UserId='".$curruser."'";
 		$sql = "SELECT MovieId from Watched WHERE UserId='".$curruser."'";
 		$q = $conn->query($sql);
-
+		$watchedids = [];
 		foreach ($q as $rowid=>$rowdata) {
 			foreach ($rowdata as $key=>$value) {
-				$ids[$rowid] = $value;
+				$watchedids[$rowid] = $value;
 			}
-		}
-		$idsarr = json_encode($ids);
+    }
+    $watchedids_json = json_encode($watchedids);
 
-		echo "<script>const wishlist_id = JSON.parse('".$idsarr."');";
+		echo "<script>const wishlist_id = JSON.parse('".$watchedids_json."');";
     	echo "</script>";
 	}
 	else{
