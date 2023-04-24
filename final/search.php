@@ -496,6 +496,16 @@ curl_close($curl);
             document.getElementById("movie" + i).innerHTML += "<div id='add_buttons'><button id='add_to_watched" +i + "' onclick='add_to_watched(" + i + ", " + movie_id + ")'>Add to watched</button><button id='add_to_wishlist" + i + "' onclick='add_to_wishlist(" + i + ", " + movie_id + ")'>Add to wishlist</button><button id='fav" + i + "' onclick='add_to_fav(" + i + ", " + movie_id + ")'>Add to favourites</button></div>";
             document.getElementById("show_data").innerHTML += "</div>"
             var isWatch = false;
+            <?php
+                        if (isset($_SESSION['userid'])){
+                            echo 'user_id = "'.$_SESSION['userid'].'";';
+                        }
+                        else {
+                            echo 'alert("Please log in to add to your wishlist");';
+                            echo "return;";
+                        }
+                    ?>
+
             $.ajax({
                     url: "iswatchpresent.php",
                     type: "POST",
@@ -514,6 +524,16 @@ curl_close($curl);
                     }
 
         });
+        <?php
+                    if (isset($_SESSION['userid'])){
+                        echo 'user_id = "'.$_SESSION['userid'].'";';
+                    }
+                    else {
+                        echo 'alert("Please log in to add to your wishlist");';
+                        echo "return;";
+                    }
+                    ?>
+
         $.ajax({
                     url: "isfavepresent.php",
                     type: "POST",
@@ -529,8 +549,19 @@ curl_close($curl);
                     }
 
         });
+        <?php
+                    if (isset($_SESSION['userid'])){
+                        echo 'user_id = "'.$_SESSION['userid'].'";';
+                    }
+                    else {
+                        echo 'alert("Please log in to add to your wishlist");';
+                        echo "return;";
+                    }
+                    ?>
+
         $.ajax({
-                    url: "iswishpresent.php",
+        
+            url: "iswishpresent.php",
                     type: "POST",
                     data: {
                         movieid: movie_id,
