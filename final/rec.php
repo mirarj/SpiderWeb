@@ -6,6 +6,8 @@
 <html>
     <head>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <link rel='stylesheet' href='style.css'>
     <style>
         * {
@@ -213,54 +215,151 @@
 
 
 
-    function add_to_watched(i) {
-        //console.log("clicked" + i);
-        console.log("$('#add_to_watched'):eq(i).html(): " + $("#add_to_watched" + i).html());
-        if ($("#add_to_watched" + i).html() == "Add to watched") {
-            $("#add_to_watched" + i).html("Remove from watched");
-            $("#add_to_watched" + i).css("background-color","red");
-            $("#add_to_wishlist" + i).css("display","none");
-            $("#fav" + i).css("display","block");
+    function add_to_watched(i, movie_id) {
+            <?php
+            if (isset($_SESSION['userid'])){
+                echo 'user_id = "'.$_SESSION['userid'].'";';
+            }
+            else {
+                echo 'alert("Please log in to add to your watched list");';
+                echo "return;";
+            }
+            ?>
+            //console.log("clicked" + i);
+            console.log("$('#add_to_watched'):eq(i).html(): " + $("#add_to_watched" + i).html());
+            if ($("#add_to_watched" + i).html() == "Add to watched") {
+                $("#add_to_watched" + i).html("Remove from watched");
+                $("#add_to_watched" + i).css("background-color","red");
+                $("#add_to_wishlist" + i).css("display","none");
+                $("#fav" + i).css("display","block");
+                $.ajax({
+                    url: "addtowatch.php",
+                    type: "POST",
+                    data: {
+                        movieid: movie_id,
+                        userid: user_id
+                    }
+
+                });
+                
+            }
+            else if ($("#add_to_watched" + i).html() == "Remove from watched") {
+   
+                $("#add_to_watched" + i).html("Add to watched");
+                $("#add_to_watched" + i).css("background-color","#E84855");
+                $("#add_to_wishlist" + i).css("display","block");
+                $("#fav" + i).html("Add to favourites");
+                $("#fav" + i).css("display","none");
+                $.ajax({
+                    url: "removefromwatch.php",
+                    type: "POST",
+                    data: {
+                        movieid: movie_id,
+                        userid: user_id
+                    }
+
+                });
+                $.ajax({
+                    url: "removefromfavs.php",
+                    type: "POST",
+                    data: {
+                        movieid: movie_id,
+                        userid: user_id
+                    }
+
+                });
+
+            }
+
+            
+                
+        }
+
+
+        function add_to_fav(i, movie_id) {
+            <?php
+            if (isset($_SESSION['userid'])){
+                echo 'user_id = "'.$_SESSION['userid'].'";';
+            }
+            else {
+                echo 'alert("Please log in to add to your favorites");';
+                echo "return;";
+            }
+            ?>
+            if ($("#fav" + i).html() == "Add to favourites") {
+                console.log("clicked fav")
+                $("#fav" + i).html("Remove from favourites");
+                $("#fav" + i).css("background-color","red");
+                $.ajax({
+                    url: "addtofaves.php",
+                    type: "POST",
+                    data: {
+                        movieid: movie_id,
+                        userid: user_id
+                    }
+
+                });
+            }
+            else if ($("#fav" + i).html() == "Remove from favourites") {
+                $("#fav" + i).html("Add to favourites");
+                $("#fav" + i).css("background-color","#AFE1AF");
+                $.ajax({
+                    url: "removefromfavs.php",
+                    type: "POST",
+                    data: {
+                        movieid: movie_id,
+                        userid: user_id
+                    }
+
+                });
+            }
+
             
         }
-        else if ($("#add_to_watched" + i).html() == "Remove from watched") {
 
-            $("#add_to_watched" + i).html("Add to watched");
-            $("#add_to_watched" + i).css("background-color","#E84855");
-            $("#add_to_wishlist" + i).css("display","block");
-            $("#fav" + i).html("Add to favourites");
-            $("#fav" + i).css("display","none");
+        function add_to_wishlist(i, movie_id) {
+            <?php
+            if (isset($_SESSION['userid'])){
+                echo 'user_id = "'.$_SESSION['userid'].'";';
+            }
+            else {
+                echo 'alert("Please log in to add to your wishlist");';
+                echo "return;";
+            }
+            ?>
+            if ($("#add_to_wishlist" + i).html() == "Add to wishlist") {
+                $("#add_to_wishlist" + i).html("Remove from wishlist");
+                $("#add_to_wishlist" + i).css("background-color","red");
+                $("#add_to_watched" + i).css("display","none");
+                $.ajax({
+                    url: "addtowish.php",
+                    type: "POST",
+                    data: {
+                        movieid: movie_id,
+                        userid: user_id
+                    }
 
+                });
+            }
+            else if ($("#add_to_wishlist" + i).html() == "Remove from wishlist") {
+   
+                $("#add_to_wishlist" + i).html("Add to wishlist");
+                $("#add_to_wishlist" + i).css("background-color","#00CFC1");
+                $("#add_to_watched" + i).css("display","block");
+                $.ajax({
+                    url: "removefromwish.php",
+                    type: "POST",
+                    data: {
+                        movieid: movie_id,
+                        userid: user_id
+                    }
+
+                });
+            }
+
+            
+            
         }
-    }
-
-
-    function add_to_fav(i) {
-        if ($("#fav" + i).html() == "Add to favourites") {
-            console.log("clicked fav")
-            $("#fav" + i).html("Remove from favourites");
-            $("#fav" + i).css("background-color","red");
-        }
-        else if ($("#fav" + i).html() == "Remove from favourites") {
-            $("#fav" + i).html("Add to favourites");
-            $("#fav" + i).css("background-color","#AFE1AF");
-        }
-    }
-
-    function add_to_wishlist(i) {
-        if ($("#add_to_wishlist" + i).html() == "Add to wishlist") {
-            $("#add_to_wishlist" + i).html("Remove from wishlist");
-            $("#add_to_wishlist" + i).css("background-color","red");
-            $("#add_to_watched" + i).css("display","none");
-        }
-        else if ($("#add_to_wishlist" + i).html() == "Remove from wishlist") {
-
-            $("#add_to_wishlist" + i).html("Add to wishlist");
-            $("#add_to_wishlist" + i).css("background-color","#00CFC1");
-            $("#add_to_watched" + i).css("display","block");
-
-        }
-    }
         // const wishlist_id = [299534, 299536];
         // const watched_id = [];
         var recommend_id = [];
@@ -404,8 +503,89 @@
         document.getElementById("movie" + i).innerHTML += "<button onclick=\"showCast(" + i + ")\" id='cast_button'>Click to see cast info!</button><div id=\"list_cast\"><ul id='cast" + i + "'>";
         get_cast_info(movie_id, i);
         document.getElementById("movie" + i).innerHTML += "</ul></div>"
-        document.getElementById("movie" + i).innerHTML += "<div id='add_buttons'><button id='add_to_watched" +i + "' onclick='add_to_watched(" + i + ")'>Add to watched</button><button id='add_to_wishlist" + i + "' onclick='add_to_wishlist(" + i + ")'>Add to wishlist</button><button id='fav" + i + "' onclick='add_to_fav(" + i + ")'>Add to favourites</button></div>";
-        document.getElementById("show_data").innerHTML += "</div>"
+        document.getElementById("movie" + i).innerHTML += "<div id='add_buttons'><button id='add_to_watched" +i + "' onclick='add_to_watched(" + i + ", " + movie_id + ")'>Add to watched</button><button id='add_to_wishlist" + i + "' onclick='add_to_wishlist(" + i + ", " + movie_id + ")'>Add to wishlist</button><button id='fav" + i + "' onclick='add_to_fav(" + i + ", " + movie_id + ")'>Add to favourites</button></div>";
+            document.getElementById("show_data").innerHTML += "</div>"
+            var isWatch = false;
+            <?php
+                        if (isset($_SESSION['userid'])){
+                            echo 'user_id = "'.$_SESSION['userid'].'";';
+                        }
+                        else {
+                            echo 'alert("Please log in to add to your wishlist");';
+                            echo "return;";
+                        }
+                    ?>
+
+            $.ajax({
+                    url: "iswatchpresent.php",
+                    type: "POST",
+                    data: {
+                        movieid: movie_id,
+                        userid: user_id
+                    },
+                    success: function(response){
+                        if (response=='true'){
+                            $("#add_to_watched" + i).html("Remove from watched");
+                            $("#add_to_watched" + i).css("background-color","red");
+                            $("#add_to_wishlist" + i).css("display","none");
+                            $("#fav" + i).css("display","block");
+                            isWatch = true;
+                        }
+                    }
+
+        });
+        <?php
+                    if (isset($_SESSION['userid'])){
+                        echo 'user_id = "'.$_SESSION['userid'].'";';
+                    }
+                    else {
+                        echo 'alert("Please log in to add to your wishlist");';
+                        echo "return;";
+                    }
+                    ?>
+
+        $.ajax({
+                    url: "isfavepresent.php",
+                    type: "POST",
+                    data: {
+                        movieid: movie_id,
+                        userid: user_id
+                    },
+                    success: function(response){
+                        if (response=='true'){
+                            $("#fav" + i).html("Remove from favourites");
+                            $("#fav" + i).css("background-color","red");
+                        }
+                    }
+
+        });
+        <?php
+                    if (isset($_SESSION['userid'])){
+                        echo 'user_id = "'.$_SESSION['userid'].'";';
+                    }
+                    else {
+                        echo 'alert("Please log in to add to your wishlist");';
+                        echo "return;";
+                    }
+                    ?>
+
+        $.ajax({
+        
+            url: "iswishpresent.php",
+                    type: "POST",
+                    data: {
+                        movieid: movie_id,
+                        userid: user_id
+                    },
+                    success: function(response){
+                        if (response=='true' && isWatch==false){
+                            $("#add_to_wishlist" + i).html("Remove from wishlist");
+                            $("#add_to_wishlist" + i).css("background-color","red");
+                            $("#add_to_watched" + i).css("display","none");
+                        }
+                    }
+
+        });
     }
     function getAPI(arr) {
 
