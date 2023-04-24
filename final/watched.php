@@ -147,6 +147,7 @@
     $db = "db4qzjfvgwun4s";
     $conn = new mysqli($server, $userid, $pw, $db);
 
+	
 	$sql = "SELECT MovieId from Watched WHERE UserId='".$curruser."'";
     $q = $conn->query($sql);
     $watchedids = [];
