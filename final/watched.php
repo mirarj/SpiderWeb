@@ -632,7 +632,7 @@
 
         <?php
         include('./header.php');
-        makeHeader('rec.php', 'Recommendations');
+        makeHeader('watched.php', 'Watched');
         ?>
 
         <div id="show_data">
