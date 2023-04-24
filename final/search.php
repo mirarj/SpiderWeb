@@ -5,207 +5,78 @@ session_start();
 
 <html>
 
-    <head>
-	    <meta charset="utf-8"/>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://kit.fontawesome.com/a7de828ebd.js" crossorigin="anonymous"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>SpiderWeb Search</title>
-        <link rel="stylesheet" href="style.css">
+<head>
+    <meta charset="utf-8"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #FFF8F0;
+            margin: 0;
+            padding: 0;
+        }
 
-    </head>
+        body {
+            height: 100%;
+        }
 
-    
+        #search h1 {
+            text-align: center;
+            font-size: 50px;
+            color: #E84855;
+            display: block;
+        }
 
-<style>
+        #search #h3_div {
+            padding: 30px;
+            width: 400px;
+            margin: 0 auto;
+            display: block;
+        }
 
-    * {
-        font-family: Arial, Helvetica, sans-serif;
-        background-color: #FFF8F0;
-        margin: 0;
-        padding: 0;
-    }
+        #search h3 {
+            display: block;
+            text-align: center;
+            font-size: 25px;
+            color: #001B2E;
+        }
 
-    body {
-        height: 100%;
-    }
+        #search {
+            //background-color: #E84855;
+            width: 1000px;
+            margin: 0 auto;
+            display: block;
+            margin-top: 40px;
+        }
 
-    #search h1 {
-        text-align: center;
-        font-size: 50px;
-        color: #E84855;
-        display: block;
-    }
+        #query {
+            color: black;
+            background-color: #00CFC140;
+            font-size: 30px;
+            width:500px;
+            border: 0px;
+            border-radius: 15px;
+            margin: 0 auto;
+            display: block;
+            margin-top: 30px;
+            padding: 20px;
+            text-align: center;
+            color: #333;
+            -webkit-box-shadow: 0 2px 10px 1px rgba(0,0,0,0.5);
+            box-shadow: 0 2px 10px 1px rgba(0,0,0,0.5);
+        }
 
-    #search #h3_div {
-        padding: 30px;
-        width: 400px;
-        margin: 0 auto;
-        display: block;
-    }
+        #genre_select {
 
-    #search h3 {
-        display: block;
-        text-align: center;
-        font-size: 25px;
-        color: #001B2E;
-    }
+        }
+    </style>
 
-    #search {
-        //background-color: #E84855;
-        width: 1000px;
-        margin: 0 auto;
-        display: block;
-        margin-top: 40px;
-
-    }
-
-
-    #query {
-        color: black;
-        background-color: #00CFC1;
-        font-size: 30px;
-        width:500px;
-        border: 0px;
-        border-radius: 15px;
-        margin: 0 auto;
-        display: block;
-        margin-top: 30px;
-        padding: 20px;
-        text-align: center;
-        color: #333;
-        -webkit-box-shadow: 0 2px 10px 1px rgba(0,0,0,0.5);
-        box-shadow: 0 2px 10px 1px rgba(0,0,0,0.5);
-    }
-
-    #genre_select {
-
-    }
-  
-    #cast_button {
-        padding: 10px;
-        font-size: 1em;
-        background-color: #001B2E;
-        border: 0px;
-        color: #FFF8F0;
-        //display: block;
-        //margin-right: 50%;
-        //margin-left: 50%;
-        //width: 300px;
-        margin:0 auto;
-        display:block;
-        font-size: 30px;
-        margin-bottom: 30px;
-    }
-
-
-
-    ul {
-        display: none;
-        //display: grid;
-        grid-template-columns: repeat(4, 1fr);
-    }
-
-    #show_data div, p, li, h2, strong, ul {
-        background-color: #001B2E;
-    }
-
-    #show_data > div {
-        border-radius: 20px;
-        width: 80%;
-        margin-right: auto;
-        margin-left: auto;
-        margin-bottom: 30px;
-        overflow: hidden;
-    }
-    #show_data p, li, h2 {
-        color: #FFF8F0;
-    }
-
-    #poster {
-        width: 250px;
-        margin-top: 30px;
-        margin-left: 30px;
-        display: block;
-    }
-
-    #title {
-        color: #E84855;
-        margin-top: 50px;
-    }
-
-    strong {
-        color: #00CFC1;
-    }
-
-
-
-    #image_column {
-        height: 450px;
-        width: 40%;
-        display: inline-block;
-        float: left:
-    }
-
-    #info_column {
-        height: 450px;
-        margin-left: 2%;
-        width: 50%;
-        display: inline-block;
-        //float: left;
-        
-        vertical-align:top;
-    }
-
-    #add_buttons button:first-child{
-        display: block;
-        margin-bottom: 30px;
-        border-radius: 30px;
-        border: 0px;
-        background-color: #E84855;
-        font-size: 25px;
-        color: #FFF8F0;
-        padding: 15px;
-        margin:0 auto;
-        display:block;
-        margin-bottom: 30px;
-        width: 300px;
-
-    }
-
-  
-
-    #add_buttons button:nth-child(2) {
-        display: block;
-        margin-bottom: 30px;
-        border-radius: 30px;
-        border: 0px;
-        background-color: #00CFC1;
-        font-size: 25px;
-        color: #FFF8F0;
-        padding: 15px;
-        margin:0 auto;
-        margin-bottom: 30px;
-        width: 300px;
-    }
-
-    #add_buttons button:nth-child(3) {
-        display: none;
-        margin-bottom: 30px;
-        border-radius: 30px;
-        border: 0px;
-        background-color: #AFE1AF;
-        font-size: 25px;
-        color: #FFF8F0;
-        padding: 15px;
-        margin:0 auto;
-        margin-bottom: 30px;
-        width: 300px;
-    }
-
-</style>
+    <title>SpiderWeb Search</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 
 
 <body>
@@ -391,7 +262,7 @@ session_start();
                 echo 'user_id = "'.$_SESSION['userid'].'";';
             }
             else {
-                echo 'console.log("Please log in to add to your wishlist");';
+                echo 'alert("Please log in to add to your wishlist");';
                 echo "return;";
             }
         ?>
@@ -482,7 +353,7 @@ session_start();
                 echo 'user_id = "'.$_SESSION['userid'].'";';
             }
             else {
-                echo 'alert("Please log in to add to your wishlist");';
+                echo 'console.log("what to do here");';
                 echo "return;";
             }
         ?>
@@ -571,43 +442,44 @@ session_start();
                     
 
                     if (movies["total_results"] == 0) {
-                        // add something
+                        results = document.getElementById("show_data");
+                        results.innerHTML = "<p>No movies found</p>"
                     }
-                    
-                    if (genre == "No Selection") {
-                        for (let i = 0; i < movies["total_results"]; i++) {
-                            let obj = movies["results"][i];
-                            let title = obj.title;
-                            let genres = obj["genre_ids"];
-                            let img_source = obj["poster_path"];
-                            let overview = obj["overview"];
-                            let date = obj["release_date"];
-                            let movie_id = obj["id"];
-                        
-                            output(movie_id, i, title, img_source, genre_array_php, genres, overview, date);
-                        }
-                    }
-                    
                     else {
-                        console.log("movies[\"results\"][2][\"genre_ids\"].lenght: " + movies["results"][2]["genre_ids"]);
-                        console.log("watch out");
-                        for (let k = 0; k < movies["total_results"]; k++) {
-                            let obj = movies["results"][k];
-                            obj["genre_ids"].forEach(element => {
-                                if (element == genre_array_php[genre]) {
-                                    console.log("in here");
-                                    let title = obj.title;
-                                    let genres = obj["genre_ids"];
-                                    let img_source = obj["poster_path"];
-                                    let overview = obj["overview"];
-                                    let date = obj["release_date"];
-                                    let movie_id = obj["id"];
+                        if (genre == "No Selection") {
+                            for (let i = 0; i < movies["total_results"]; i++) {
+                                let obj = movies["results"][i];
+                                let title = obj.title;
+                                let genres = obj["genre_ids"];
+                                let img_source = obj["poster_path"];
+                                let overview = obj["overview"];
+                                let date = obj["release_date"];
+                                let movie_id = obj["id"];
+                            
+                                output(movie_id, i, title, img_source, genre_array_php, genres, overview, date);
+                            }
+                        }
+                        
+                        else {
+                            console.log("movies[\"results\"][2][\"genre_ids\"].lenght: " + movies["results"][2]["genre_ids"]);
+                            console.log("watch out");
+                            for (let k = 0; k < movies["total_results"]; k++) {
+                                let obj = movies["results"][k];
+                                obj["genre_ids"].forEach(element => {
+                                    if (element == genre_array_php[genre]) {
+                                        console.log("in here");
+                                        let title = obj.title;
+                                        let genres = obj["genre_ids"];
+                                        let img_source = obj["poster_path"];
+                                        let overview = obj["overview"];
+                                        let date = obj["release_date"];
+                                        let movie_id = obj["id"];
 
-                                    output(movie_id, k, title, img_source, genre_array_php, genres, overview, date);                                    }
-                            });
+                                        output(movie_id, k, title, img_source, genre_array_php, genres, overview, date);                                    }
+                                });
+                            }
                         }
                     }
-                    
                 })
                 .catch (error => console.log(error))                    
         }
