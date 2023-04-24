@@ -510,10 +510,6 @@ main();
 
 </script>
 
-<?php
-include('./header.php');
-makeHeader('rec.php', 'Recommendations');
-?>
 
 <div id="show_data">
 	<p id="title"></p>
