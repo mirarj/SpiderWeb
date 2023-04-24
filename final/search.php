@@ -11,7 +11,7 @@ session_start();
         <script src="https://kit.fontawesome.com/a7de828ebd.js" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>MyMovieNetwork</title>
+        <title>SpiderWeb Search</title>
         <link rel="stylesheet" href="style.css">
 
     </head>
@@ -212,7 +212,7 @@ session_start();
 
 <?php
     include('./header.php');
-    makeHeader('search.php', 'MyMovieNetwork');
+    makeHeader('search.php', 'Search');
 ?>
 <div id="search">
     <h1>Welcome to SpiderWeb Movies!</h1>
