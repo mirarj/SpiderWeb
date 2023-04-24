@@ -147,7 +147,7 @@
     $db = "db4qzjfvgwun4s";
     $conn = new mysqli($server, $userid, $pw, $db);
 
-	$sql = "SELECT MovieId from WatchList WHERE UserId='".$curruser."'";
+	$sql = "SELECT MovieId from WatchLater WHERE UserId='".$curruser."'";
     $q = $conn->query($sql);
     $watchedids = [];
     foreach ($q as $rowid=>$rowdata) {
