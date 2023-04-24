@@ -140,6 +140,7 @@
     // $sql = "SELECT MovieId from Watched WHERE UserId='".$curruser."'";
     
     //establish connection info
+    $curruser = $_SESSION['userid'];
     $server = "35.212.42.21";
     $userid = "uaqtg5oezskik";
     $pw = "talissqluser";
