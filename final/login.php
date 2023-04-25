@@ -23,7 +23,6 @@ session_start();
 ?>
 
 <?php
-
 	$helptext = "<p id='help'>Don't have an account? <a href='./signup.php'>Sign up here</a>.</p>";
 	$errortext = "<p id='error'></p>";
 	if ($_POST) {
@@ -47,8 +46,8 @@ session_start();
 				foreach ($result2 as $rowid2=>$rowdata2) {
 					if ($pw == $rowdata2['password']) {
 						$_SESSION['userid'] = $unem;
-						if (isset($_POST['origin'])){
-							$redirect = $_POST['origin'];
+						if (isset($_GET['origin'])){
+							$redirect = $_GET['origin'];
 						}
 						else {
 							$redirect = 'search.php';
@@ -56,7 +55,7 @@ session_start();
 						echo '<script type="text/javascript">window.location = "'.$redirect.'"</script>';
 					}
 					else {
-						echo "<p id='error'>Incorrect password.</p>";
+						$errortext = "<p id='error'>Incorrect password.</p>";
 					}
 				}
 			}
@@ -88,17 +87,26 @@ session_start();
 		}
 
 		$conn->close();
-	
 	}
-
 ?>
 <div class='ls'>
-<form method="post" id="login_form" class='ls' action="login.php">
+<?php
+	if(isset($_GET['origin'])) {
+		$actionurl = 'login.php?origin='.$_GET['origin'];
+	}
+	else {
+		$actionurl = 'login.php';
+	}
+?>
+<form method="post" id="login_form" class='ls' action="
+<?php
+echo $actionurl;
+?>
+">
 	<label for="un">Username/Email</label>
 	<input type='text' name='username' id='un'>
 	<label for="pw">Password</label>
 	<input type='password' name='password' id='pw'>
-	<input type='hidden' name='origin' value='<?php echo $_GET['origin']?>'>
 	<?php
 	echo $errortext;
 	?>
@@ -107,13 +115,13 @@ session_start();
 <?php
 	echo $helptext;
 ?>
-
+<p class='unavailable'></p>
 
 <script>
 
-
 	form_obj = document.querySelector("#login_form");
 	errortext = document.querySelector("#error");
+	loggedin = document.querySelector(".unavailable");
 	
 	form_obj.onsubmit = function() {
 		un = document.querySelector("#un").value;
@@ -132,7 +140,14 @@ session_start();
 
 		return true;
 	}
-
+	<?php
+		if (isset($_SESSION['userid'])) {
+			echo "form_obj.style.display = 'none';";
+			echo "errortext.style.display = 'none';";
+			$p = "<p class='unavailable'>You are already logged in. Search for new movies to watch <a href='./login.php?origin=wishlist.php'>here</a>!</p>";
+			echo "loggedin.innerHTML = ".$p.";";
+		}
+	?>
 </script>
 
 </div>
